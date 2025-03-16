@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">📋 Movimentação de Chaves</h2>
+
+    <!-- BOTÕES DE AÇÃO -->
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{% url 'registrar_saida' %}" class="btn btn-primary">➕ Registrar Saída</a>
+        <a href="{% url 'listar_chaves' %}" class="btn btn-info">🔑 Lista de Chaves</a>
+    </div>
+
+    <!-- FILTRO DE STATUS -->
+    <form method="GET" class="mb-3 d-flex gap-2">
+        <label for="status" class="fw-bold mt-2">📌 Filtrar por Status:</label>
+        <select id="status" name="status" class="form-control w-25">
+            <option value="">Todos</option>
+            <option value="Não Devolvida" {% if filtro_status == "Não Devolvida" %}selected{% endif %}>🔴 Não Devolvida</option>
+            <option value="Devolvida" {% if filtro_status == "Devolvida" %}selected{% endif %}>🟢 Devolvida</option>
+        </select>
+        <button type="submit" class="btn btn-success">🔍 Filtrar</button>
+    </form>
+
+    <!-- TABELA DE MOVIMENTAÇÕES -->
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Chave</th>
+                <th>Responsável</th>
+                <th>Data Saída</th>
+                <th>Status</th>
+                <th>Editar</th>
+                <th>Devolução</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movimentacao in movimentacoes %}
+                <tr>
+                    <td>{{ movimentacao.chave.numero }}</td>
+                    <td>{{ movimentacao.responsavel }}</td>
+                    <td>{{ movimentacao.data_saida }}</td>
+                    <td>
+                        {% if movimentacao.status == "Não Devolvida" %}
+                            <span class="badge bg-danger">🔴 Não Devolvida</span>
+                        {% else %}
+                            <span class="badge bg-success">🟢 Devolvida</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'editar_saida' movimentacao.id %}" class="btn btn-sm btn-warning">✏️ Editar</a>
+                    </td>
+                    <td>
+                        {% if movimentacao.status == "Não Devolvida" %}
+                            <a href="{% url 'registrar_devolucao' movimentacao.id %}" class="btn btn-warning btn-sm">Devolver</a>
+                        {% else %}
+                            ✅
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="5" class="text-center text-muted">Nenhuma movimentação encontrada.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

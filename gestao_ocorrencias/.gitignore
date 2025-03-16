@@ -1,0 +1,16 @@
+.env
+__pycache__/
+db.sqlite3
+*.pyc
+.DS_Store
+media/
+echo venv/ > .gitignore
+echo __pycache__/ >> .gitignore
+echo db.sqlite3 >> .gitignore
+echo *.log >> .gitignore
+echo *.pdf >> .gitignore
+echo media/ >> .gitignore
+echo staticfiles/ >> .gitignore
+echo *.bat >> .gitignore
+echo *.vbs >> .gitignore
+echo poppler/ >> .gitignore

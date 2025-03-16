@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+    {{ block.super }}  <!-- Mantém o conteúdo original -->
+
+    <style>
+        /* 🔹 Oculta completamente a seção "Ações Recentes" */
+        div.recent-actions {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* 🔹 Remove a versão do Jazzmin no rodapé */
+        div.jazzmin-version {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* 🔹 Ajuste de espaçamento para evitar áreas vazias */
+        main {
+            padding-bottom: 20px !important;
+        }
+    </style>
+{% endblock %}

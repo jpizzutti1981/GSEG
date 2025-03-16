@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h2>Detalhes da Notificação</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>📍 Loja:</strong> {{ notificacao.loja }}</p>
+          <p><strong>🕒 Data e Hora:</strong> {{ notificacao.data_ocorrencia|date:"d/m/Y" }} {{ notificacao.hora_ocorrencia|time:"H:i" }}</p>
+          <p><strong>⚠️ Motivo:</strong> {{ notificacao.motivo }}</p>
+          <p><strong>📝 Descrição:</strong> {{ notificacao.descricao }}</p>
+
+          {% if notificacao.imagem %}
+          <p><strong>📷 Imagem:</strong></p>
+          <img src="{{ notificacao.imagem.url }}" class="img-fluid rounded">
+          {% endif %}
+
+          <div class="text-center mt-4">
+            <a href="{% url 'listar_notificacoes' %}" class="btn btn-secondary">Voltar</a>
+            <a href="{% url 'editar_notificacao' notificacao.id %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'baixar_pdf_notificacao' notificacao.id %}" class="btn btn-primary">📄 Baixar PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

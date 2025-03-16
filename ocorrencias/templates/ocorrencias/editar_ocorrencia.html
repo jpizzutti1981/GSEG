@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Editar Ocorrência</h2>
+
+    <form method="post" enctype="multipart/form-data" class="mt-3">
+        {% csrf_token %}
+
+        <!-- Exibir o formulário com classes Bootstrap -->
+        <div class="mb-3">
+            {{ form.data_ocorrencia.label_tag }}
+            {{ form.data_ocorrencia }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form.horario.label_tag }}
+            {{ form.horario }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.tipo.label_tag }}
+            {{ form.tipo }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.status.label_tag }}
+            {{ form.status }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.local.label_tag }}
+            {{ form.local }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.nome_local.label_tag }}
+            {{ form.nome_local }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.relato.label_tag }}
+            {{ form.relato }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.responsavel.label_tag }}
+            {{ form.responsavel }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.envolvidos.label_tag }}
+            {{ form.envolvidos }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.acoes_tomadas.label_tag }}
+            {{ form.acoes_tomadas }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.supervisor.label_tag }}
+            {{ form.supervisor }}
+        </div>
+
+        <!-- Upload de Imagem -->
+        <div class="mb-3">
+            {{ form.imagem.label_tag }}
+            {{ form.imagem }}
+        </div>
+
+        <!-- Exibir imagem atual se houver -->
+        {% if ocorrencia.imagem %}
+        <div class="mb-3">
+            <p><strong>Imagem Atual:</strong></p>
+            <img src="{{ ocorrencia.imagem.url }}" alt="Imagem da ocorrência" class="img-thumbnail" style="max-width: 200px;">
+        </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-success">Salvar Alterações</button>
+        <a href="{% url 'listar_ocorrencias' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

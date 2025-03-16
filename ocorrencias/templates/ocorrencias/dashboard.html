@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">📊 Dashboard de Ocorrências</h2>
+
+    <!-- 🔹 Filtros -->
+    <form method="GET" class="row g-3">
+        <div class="col-md-2">
+            <label class="form-label">Mês</label>
+            <select name="mes" class="form-select">
+                <option value="">Todos</option>
+                {% for num, nome in meses_disponiveis.items %}
+                    <option value="{{ num }}" {% if mes_filtro == num|stringformat:"s" %}selected{% endif %}>
+                        {{ nome }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Ano</label>
+            <select name="ano" class="form-select">
+                <option value="">Todos</option>
+                {% for ano in anos_disponiveis %}
+                    <option value="{{ ano }}" {% if ano_filtro == ano|stringformat:"s" %}selected{% endif %}>
+                        {{ ano }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Tipo de Ocorrência</label>
+            <select name="tipo" class="form-select">
+                <option value="">Todos</option>
+                {% for tipo in tipos %}
+                    <option value="{{ tipo.id }}" {% if tipo_filtro == tipo.id|stringformat:"s" %}selected{% endif %}>
+                        {{ tipo.nome }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Status</label>
+            <select name="status" class="form-select">
+                <option value="">Todos</option>
+                <option value="pendente" {% if status_filtro == "pendente" %}selected{% endif %}>Pendente</option>
+                <option value="em_andamento" {% if status_filtro == "em_andamento" %}selected{% endif %}>Em Andamento</option>
+                <option value="concluido" {% if status_filtro == "concluido" %}selected{% endif %}>Concluído</option>
+            </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary ms-2">Limpar</a>
+        </div>
+    </form>
+
+    <!-- 🔹 Cartões de Indicadores -->
+    <div class="row mt-4 text-center">
+        <div class="col-md-3">
+            <div class="card bg-light p-2">
+                <h5 class="card-title">Total no Mês</h5>
+                <p class="fs-3">{{ total_ocorrencias_mes }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light p-2">
+                <h5 class="card-title">Total no Ano</h5>
+                <p class="fs-3">{{ total_ocorrencias_ano }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white p-2">
+                <h5 class="card-title">Concluídas</h5>
+                <p class="fs-3">{{ total_concluidas }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning p-2">
+                <h5 class="card-title">Em Andamento</h5>
+                <p class="fs-3">{{ total_em_andamento }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔹 Gráfico -->
+    <div class="card shadow mt-4">
+        <div class="card-header bg-primary text-white text-center">
+            📊 Ocorrências por Mês
+        </div>
+        <div class="card-body">
+            <canvas id="chartMes" style="height: 400px;"></canvas> <!-- Ajuste na altura -->
+        </div>
+    </div>
+
+</div>
+
+<!-- 🔹 Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var mesesLabels = JSON.parse('{{ meses_labels|safe }}');
+        var mesesValues = JSON.parse('{{ meses_values|safe }}');
+
+        console.log("Meses Labels:", mesesLabels);
+        console.log("Meses Values:", mesesValues);
+
+        new Chart(document.getElementById("chartMes"), {
+            type: 'bar',
+            data: {
+                labels: mesesLabels,
+                datasets: [{
+                    label: "Ocorrências por Mês",
+                    data: mesesValues,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

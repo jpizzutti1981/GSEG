@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">📋 Atendimentos Ambulatoriais (Modo Card)</h2>
+    
+    <!-- Formulário de Filtros (igual ao da tabela, se desejar) -->
+    <form method="GET" class="row g-3 mb-4">
+        <!-- (Mesmo formulário de filtros do template de tabela) -->
+    </form>
+
+    <div class="row">
+        {% for atendimento in atendimentos %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ atendimento.data }}</h5>
+                        <p class="card-text">
+                            <strong>Mês:</strong> {{ atendimento.mes }}<br>
+                            <strong>Trimestre:</strong> {{ atendimento.trimestre }}<br>
+                            <strong>Ano:</strong> {{ atendimento.ano }}<br>
+                            <strong>Atendimentos:</strong> {{ atendimento.qtde_atendimentos }}<br>
+                            <strong>Ambulatorial:</strong> {{ atendimento.ambulatorial }}<br>
+                            <strong>Traumatológico:</strong> {{ atendimento.traumatologico }}
+                        </p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'editar_atendimento' atendimento.id %}" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'excluir_atendimento' atendimento.id %}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">Nenhum atendimento encontrado.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

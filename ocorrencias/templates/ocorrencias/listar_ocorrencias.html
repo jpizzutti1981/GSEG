@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Lista de Ocorrências</h2>
+
+    <!-- Filtros de Busca -->
+    <form method="get" class="row g-2 align-items-end">
+        <div class="col-md-2">
+            <label for="data_inicio" class="form-label">Data Inicial</label>
+            <input type="date" class="form-control" id="data_inicio" name="data_inicio" value="{{ data_inicio }}">
+        </div>
+        <div class="col-md-2">
+            <label for="data_fim" class="form-label">Data Final</label>
+            <input type="date" class="form-control" id="data_fim" name="data_fim" value="{{ data_fim }}">
+        </div>
+        <div class="col-md-2">
+            <label for="tipo" class="form-label">Tipo de Ocorrência</label>
+            <select class="form-select" id="tipo" name="tipo">
+                <option value="">Todos</option>
+                {% for tipo in tipos %}
+                    <option value="{{ tipo.id }}" {% if tipo_filtro == tipo.id|stringformat:"s" %}selected{% endif %}>
+                        {{ tipo.nome }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" name="status">
+                <option value="">Todos</option>
+                <option value="pendente" {% if status_filtro == "pendente" %}selected{% endif %}>Pendente</option>
+                <option value="em_andamento" {% if status_filtro == "em_andamento" %}selected{% endif %}>Em Andamento</option>
+                <option value="concluido" {% if status_filtro == "concluido" %}selected{% endif %}>Concluído</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="local" class="form-label">Local</label>
+            <select class="form-select" id="local" name="local">
+                <option value="">Todos</option>
+                {% for local in locais %}
+                    <option value="{{ local.id }}" {% if local_filtro == local.id|stringformat:"s" %}selected{% endif %}>
+                        {{ local.nome }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Botões "Filtrar" e "Limpar Filtros" alinhados abaixo -->
+        <div class="col-md-12 d-flex gap-2 mt-2">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <a href="{% url 'listar_ocorrencias' %}" class="btn btn-secondary">Limpar Filtros</a>
+        </div>
+    </form>
+
+    <!-- Botão "+ Nova Ocorrência" alinhado corretamente -->
+    <div class="text-end mt-2">
+        <a href="{% url 'cadastrar_ocorrencia' %}" class="btn btn-success">+ Nova Ocorrência</a>
+    </div>
+
+    <!-- Tabela de Ocorrências -->
+    <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Status</th>
+                <th>Local</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ocorrencia in ocorrencias %}
+            <tr>
+                <td>{{ ocorrencia.id }}</td>
+                <td>{{ ocorrencia.data_ocorrencia|date:"d/m/Y" }}</td>
+                <td>{{ ocorrencia.tipo }}</td>
+                <td>
+                    {% if ocorrencia.status == "pendente" %}
+                        <span class="badge bg-danger">Pendente</span>
+                    {% elif ocorrencia.status == "em_andamento" %}
+                        <span class="badge bg-warning text-dark">Em Andamento</span>
+                    {% else %}
+                        <span class="badge bg-success">Concluído</span>
+                    {% endif %}
+                </td>
+                <td>{{ ocorrencia.local }}</td>
+                <td>
+                    <a href="{% url 'editar_ocorrencia' ocorrencia.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'excluir_ocorrencia' ocorrencia.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">Nenhuma ocorrência encontrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

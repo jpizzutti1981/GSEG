@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">🔑 Lista de Chaves</h2>
+
+    <!-- 🔹 Formulário de Pesquisa -->
+    <form method="GET" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <label for="numero" class="form-label">🔢 Número da Chave:</label>
+            <input type="text" name="numero" id="numero" class="form-control" value="{{ numero_filtro }}" placeholder="Ex: 101">
+        </div>
+        <div class="col-md-3">
+            <label for="nome" class="form-label">🏷️ Nome da Chave:</label>
+            <input type="text" name="nome" id="nome" class="form-control" value="{{ nome_filtro }}" placeholder="Ex: Sala Reunião">
+        </div>
+        <div class="col-md-3">
+            <label for="disponivel" class="form-label">📌 Disponibilidade:</label>
+            <select name="disponivel" id="disponivel" class="form-select">
+                <option value="">Todas</option>
+                <option value="sim" {% if disponivel_filtro == "sim" %}selected{% endif %}>✅ Sim</option>
+                <option value="nao" {% if disponivel_filtro == "nao" %}selected{% endif %}>❌ Não</option>
+            </select>
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-success w-100">🔍 Buscar</button>
+        </div>
+    </form>
+
+    <div class="text-center mb-3">
+        <a href="{% url 'registrar_saida' %}" class="btn btn-primary">➕ Registrar Saída</a>
+        <a href="{% url 'cadastrar_chave' %}" class="btn btn-info">➕ Cadastrar Nova Chave</a>
+    </div>
+
+    <!-- 🔹 Tabela de Chaves -->
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Número</th>
+                <th>Nome</th>
+                <th>Cor</th>
+                <th>Disponível?</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for chave in chaves %}
+                <tr>
+                    <td>{{ chave.numero }}</td>
+                    <td>{{ chave.nome }}</td>
+                    <td>{{ chave.cor_chaveiro }}</td>
+                    <td>{% if chave.disponivel %}✅ Sim{% else %}❌ Não{% endif %}</td>
+                    <td>
+                        <a href="{% url 'editar_chave' chave.id %}" class="btn btn-warning btn-sm">✏️ Editar</a>
+                        <a href="{% url 'deletar_chave' chave.id %}" class="btn btn-danger btn-sm">🗑️ Deletar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="5" class="text-center text-muted">Nenhuma chave encontrada.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

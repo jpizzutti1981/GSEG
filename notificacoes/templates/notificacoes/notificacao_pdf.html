@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin: 40px;
+        }
+        .container {
+            border: 2px solid #000;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 20px;
+            text-decoration: underline;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 120px; /* Largura mantém padrão */
+            height: auto;
+        }
+        .logo-direita {
+            width: 100px;  /* Largura normal */
+            height: 70px;   /* 🔹 Altura reduzida */
+            object-fit: contain;
+        }
+        .imagem-ocorrencia {
+            text-align: center;
+            margin-top: 20px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        .imagem-ocorrencia img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+        .assinaturas {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .assinaturas div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <img src="{{ logo_esquerda }}" class="logo">
+        <img src="{{ logo_direita }}" class="logo-direita"> <!-- 🔹 Altura reduzida aqui -->
+    </div>
+    
+    <div style="border: 2px solid black; padding: 10px; margin-top: 10px;">
+        <h2 style="text-align: center;"><strong>NOTIFICAÇÃO</strong></h2>
+        
+        <p><strong>🏬 LOJA:</strong> {{ notificacao.loja }}</p>
+        <p>
+            Informamos que a loja supra está sendo notificada pelo não cumprimento dos itens abaixo assinalados constantes do 
+            <strong>REGIMENTO INTERNO</strong> do Shopping Pontal. Em virtude da ocorrência registrada, está sendo advertida 
+            conforme cláusula do contrato de locação.
+        </p>
+    
+        <p><strong>⚠ Motivo:</strong> {{ notificacao.motivo }}</p>
+        <p><strong>📆 Porto Alegre – RS, {{ data_formatada_extenso }}</strong></p>
+    
+        <p><strong>📄 Notificada por:</strong> _______________________________________</p>
+    
+        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <div>
+                <p>_________________________</p>
+                <p>Gerente e/ou responsável pela loja</p>
+            </div>
+            <div>
+                <p>_________________________</p>
+                <p>Coordenador de Segurança</p>
+            </div>
+        </div>
+    
+        {% if imagem_ocorrencia %}
+        <div style="border: 1px solid black; padding: 5px; margin-top: 20px; text-align: center;">
+            <p><strong>📷 Imagem Ocorrência:</strong></p>
+            <img src="{{ imagem_ocorrencia }}" style="width: 100%; height: auto; max-height: 300px; object-fit: contain;">
+        </div>
+        {% endif %}
+    </div>
+    
+</body>
+</html>

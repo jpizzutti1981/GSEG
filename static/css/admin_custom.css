@@ -1,0 +1,30 @@
+/* 🔹 Remove completamente a seção "Ações Recentes" */
+div[class*="recent-actions"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* 🔹 Remove a versão do Jazzmin no canto inferior direito */
+div[class*="jazzmin-version"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* 🔹 Oculta qualquer mensagem de erro associada à seção de ações */
+div[class*="alert"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* 🔹 Remove possíveis margens que poderiam deixar um espaço em branco */
+div[class*="recent-actions"], div[class*="jazzmin-version"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0px !important;
+}
+
+/* 🔹 Remove a versão do Jazzmin no rodapé */
+div.jazzmin-version {
+    display: none !important;
+    visibility: hidden !important;
+}

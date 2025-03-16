@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-white text-center">
+                    <h2>✏️ Editar Reciclagem</h2>
+                </div>
+                <div class="card-body">
+                    
+                    <!-- Mensagens de Sucesso e Erro -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <!-- Nome do Colaborador -->
+                        <div class="mb-3">
+                            <label for="{{ form.nome_colaborador.id_for_label }}" class="form-label fw-bold">👤 Nome do Colaborador:</label>
+                            {{ form.nome_colaborador }}
+                        </div>
+
+                        <!-- Data da Última Reciclagem -->
+                        <div class="mb-3">
+                            <label for="{{ form.data_ultima_reciclagem.id_for_label }}" class="form-label fw-bold">📅 Data da Última Reciclagem:</label>
+                            {{ form.data_ultima_reciclagem }}
+                        </div>
+
+                        <!-- Upload do Diploma -->
+                        <div class="mb-3">
+                            <label for="{{ form.diploma.id_for_label }}" class="form-label fw-bold">📄 Diploma (PDF ou Imagem):</label>
+                            {{ form.diploma }}
+                            {% if reciclagem.diploma %}
+                                <p class="mt-2">📂 <a href="{{ reciclagem.diploma.url }}" target="_blank">Visualizar Diploma Atual</a></p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Botões -->
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success">Salvar Alterações</button>
+                            <a href="{% url 'listar_reciclagens' %}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

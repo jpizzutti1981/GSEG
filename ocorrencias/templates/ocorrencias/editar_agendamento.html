@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-warning text-white text-center">
+          <h3>Editar Agendamento</h3>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="id_horario_envio" class="form-label fw-bold">Novo Horário:</label>
+              <input type="time" id="id_horario_envio" name="horario_envio" class="form-control" value="{{ agendamento.horario_envio }}">
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'automacao' %}" class="btn btn-secondary">Cancelar</a>
+              <button type="submit" class="btn btn-success">Salvar Alteração</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

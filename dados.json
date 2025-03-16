@@ -1,0 +1,3195 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "ocorrencias",
+        "model": "ocorrencia"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "ocorrencias",
+        "model": "local"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "ocorrencias",
+        "model": "tipoocorrencia"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "django_celery_results",
+        "model": "taskresult"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "django_celery_results",
+        "model": "chordcounter"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "django_celery_results",
+        "model": "groupresult"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "django_celery_beat",
+        "model": "crontabschedule"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+        "app_label": "django_celery_beat",
+        "model": "intervalschedule"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+        "app_label": "django_celery_beat",
+        "model": "periodictask"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+        "app_label": "django_celery_beat",
+        "model": "periodictasks"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": {
+        "app_label": "django_celery_beat",
+        "model": "solarschedule"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 18,
+    "fields": {
+        "app_label": "django_celery_beat",
+        "model": "clockedschedule"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 19,
+    "fields": {
+        "app_label": "ocorrencias",
+        "model": "configuracaoautomacao"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 20,
+    "fields": {
+        "app_label": "django_q",
+        "model": "schedule"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 21,
+    "fields": {
+        "app_label": "django_q",
+        "model": "task"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 22,
+    "fields": {
+        "app_label": "django_q",
+        "model": "failure"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 23,
+    "fields": {
+        "app_label": "django_q",
+        "model": "success"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 24,
+    "fields": {
+        "app_label": "django_q",
+        "model": "ormq"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 25,
+    "fields": {
+        "app_label": "ocorrencias",
+        "model": "logsinopse"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 26,
+    "fields": {
+        "app_label": "ocorrencias",
+        "model": "agendamento"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "dh6l7s4fvdswc4evvlq88u43nzpueszd",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2pCxwJS4dO8ZyAxDS9VAUtqV8e62SRd2-977_6MCrUsOa0tzmETd1FVd_hlTfKWyC3lSGauOtSzzxHpP9GGbflRJ7_vRng4ytbytwQuIBZAULTg0tAFjE6JD7xi9QUEGD2IGEbI-OogGu47JYT_0qL4_yJk3Ow:1tr3qy:JKbSkc_MaW6MVSj-zfDoc1DEDA9hO3Q_JLOCk2601Bk",
+        "expire_date": "2025-03-22T23:45:12.042Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "lsx0p9xpoh411wnt35z5wj7e1jy58b30",
+    "fields": {
+        "session_data": "e30:1tro1q:1SYTm0lfvDqfcuibXve_3MRO_m_iSt0Yj5orUd3PFP8",
+        "expire_date": "2025-03-25T01:03:30.525Z"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 1,
+    "fields": {
+        "nome": "Alegação de Furto"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 2,
+    "fields": {
+        "nome": "Atitude Suspeita"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 3,
+    "fields": {
+        "nome": "Ocorrência de Discussão entre partes"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 4,
+    "fields": {
+        "nome": "Ocorrência de Mútua Agressão"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 5,
+    "fields": {
+        "nome": "Desordens"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 6,
+    "fields": {
+        "nome": "Socorro de Emergência"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 7,
+    "fields": {
+        "nome": "Prática de mendicância"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 8,
+    "fields": {
+        "nome": "Vendedor ambulante"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 9,
+    "fields": {
+        "nome": "Loja fechada durante expediente"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 10,
+    "fields": {
+        "nome": "Loja esquecida aberta após o horário de expediente"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 11,
+    "fields": {
+        "nome": "Elevador / Escada em manutenção"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 12,
+    "fields": {
+        "nome": "Reportagem"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 13,
+    "fields": {
+        "nome": "Colocação de faixas/cartazes e panfletos"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 14,
+    "fields": {
+        "nome": "Vazamento de Água / Gás / Combustível"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 15,
+    "fields": {
+        "nome": "Falta de energia elétrica"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 16,
+    "fields": {
+        "nome": "Serv.de reparos ou ref.de Lojas n/ Autorizada"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 17,
+    "fields": {
+        "nome": "Entrada de mercadorias fora do horário normal"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 18,
+    "fields": {
+        "nome": "Solicitação de Limpeza"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 19,
+    "fields": {
+        "nome": "Pessoas no interior da loja fora do horário de expediente"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 20,
+    "fields": {
+        "nome": "Veículo Aberto"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 21,
+    "fields": {
+        "nome": "Disparo de alarme de porta de loja ou veículo"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 22,
+    "fields": {
+        "nome": "Veículo com faróis acesos"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 23,
+    "fields": {
+        "nome": "Criança perdida"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 24,
+    "fields": {
+        "nome": "Alegação de estelionato"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 25,
+    "fields": {
+        "nome": "Achados e Perdidos"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 26,
+    "fields": {
+        "nome": "Odor- (T) Tinta; (C) Cola; (E) Esgoto"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 27,
+    "fields": {
+        "nome": "Arma de Forma Geral"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 28,
+    "fields": {
+        "nome": "Material Explosivo / Bomba"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 29,
+    "fields": {
+        "nome": "Atentado ao pudor"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 30,
+    "fields": {
+        "nome": "Porte e uso de Entorpecentes"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 31,
+    "fields": {
+        "nome": "Funcionário sem credencial ou autorização"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 32,
+    "fields": {
+        "nome": "Verificação de Área - Ronda"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 33,
+    "fields": {
+        "nome": "Abertura e Fechamento"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 34,
+    "fields": {
+        "nome": "Deficiente Físico - (C) Cego; (P) Paralítico; (S) Surdo; (M) Mental"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 35,
+    "fields": {
+        "nome": "Apoio Cadeira de Rodas"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 36,
+    "fields": {
+        "nome": "Apoio Carrinho de Bebê"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 37,
+    "fields": {
+        "nome": "Tabagismo"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 38,
+    "fields": {
+        "nome": "Passagem de armamento"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 39,
+    "fields": {
+        "nome": "Transporte Valores"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 40,
+    "fields": {
+        "nome": "Substituição de bateria"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 41,
+    "fields": {
+        "nome": "Elevador com problema ou manutenção"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 42,
+    "fields": {
+        "nome": "Auxilio ao Cliente"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 43,
+    "fields": {
+        "nome": "Animais"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 44,
+    "fields": {
+        "nome": "Fraldário"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 45,
+    "fields": {
+        "nome": "Alarme"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 46,
+    "fields": {
+        "nome": "Pesquisa No Sistema"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 47,
+    "fields": {
+        "nome": "Vácuo De Veículos"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 48,
+    "fields": {
+        "nome": "Acesso Duplo De Credenciado"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 49,
+    "fields": {
+        "nome": "Veículo Parado Irregular"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 50,
+    "fields": {
+        "nome": "Sangria"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 51,
+    "fields": {
+        "nome": "Abastecimento"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 52,
+    "fields": {
+        "nome": "Acidente C/ Vitimas"
+    }
+},
+{
+    "model": "ocorrencias.tipoocorrencia",
+    "pk": 53,
+    "fields": {
+        "nome": "Acidente S/ Vitimas"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 1,
+    "fields": {
+        "nome": "Mall"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 2,
+    "fields": {
+        "nome": "Estacionamento"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 3,
+    "fields": {
+        "nome": "Praça de Alimentação"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 4,
+    "fields": {
+        "nome": "Torre"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 5,
+    "fields": {
+        "nome": "Leroy"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 6,
+    "fields": {
+        "nome": "Hotel"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 7,
+    "fields": {
+        "nome": "Corredores técnicos"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 8,
+    "fields": {
+        "nome": "Portaria"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 9,
+    "fields": {
+        "nome": "Entorno"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 10,
+    "fields": {
+        "nome": "Parque"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 11,
+    "fields": {
+        "nome": "Atrio"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 12,
+    "fields": {
+        "nome": "Lojas"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 13,
+    "fields": {
+        "nome": "Administração"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 14,
+    "fields": {
+        "nome": "Central de Segurança"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 15,
+    "fields": {
+        "nome": "Sala de atendimento"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 16,
+    "fields": {
+        "nome": "Áreas técnicas"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 17,
+    "fields": {
+        "nome": "Refeitório"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 18,
+    "fields": {
+        "nome": "Docas"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 19,
+    "fields": {
+        "nome": "Elevadores"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 20,
+    "fields": {
+        "nome": "Escada Rolante"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 21,
+    "fields": {
+        "nome": "Tapumes"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 22,
+    "fields": {
+        "nome": "Quiosque"
+    }
+},
+{
+    "model": "ocorrencias.local",
+    "pk": 23,
+    "fields": {
+        "nome": "Eventos"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 1,
+    "fields": {
+        "data_ocorrencia": "2025-02-28",
+        "horario": "15:06:00",
+        "tipo": 2,
+        "local": 1,
+        "nome_local": "Acesso A",
+        "relato": "Atividade suspeita próximo da Joalheria",
+        "imagem": "ocorrencias/brasil-bolsa-de-valores-chega-a-100-mil-pontos-pela-primeira-vez-na-historia-97.jpg",
+        "status": "em_andamento",
+        "responsavel": "Joana",
+        "envolvidos": "supervisor e lider da Rudder",
+        "acoes_tomadas": "Acompanhamento do suspeito, orientação ao lojista e repasse a equipe",
+        "supervisor": "José"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 2,
+    "fields": {
+        "data_ocorrencia": "2025-03-01",
+        "horario": "12:05:00",
+        "tipo": 3,
+        "local": 3,
+        "nome_local": "Cachorro Jão",
+        "relato": "Discussão entre clientes",
+        "imagem": "ocorrencias/133771805063502542.jpg",
+        "status": "em_andamento",
+        "responsavel": "Marcio",
+        "envolvidos": "supervisor e lider da Rudder",
+        "acoes_tomadas": "Orientação a cliente - registro de imagens",
+        "supervisor": "Marcos"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 3,
+    "fields": {
+        "data_ocorrencia": "2025-03-07",
+        "horario": "16:00:00",
+        "tipo": 1,
+        "local": 12,
+        "nome_local": "São Jão",
+        "relato": "furto de medicamentos na loja, informado pelo gerente",
+        "imagem": "ocorrencias/Grafico_Ana_.png",
+        "status": "em_andamento",
+        "responsavel": "Mateus",
+        "envolvidos": "supervisor e lider",
+        "acoes_tomadas": "Orientação ao lojista, busca de imagens para busca do autor",
+        "supervisor": "Mario"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 4,
+    "fields": {
+        "data_ocorrencia": "2025-03-05",
+        "horario": "19:05:00",
+        "tipo": 3,
+        "local": 10,
+        "nome_local": "Pier",
+        "relato": "pescadores em discussão",
+        "imagem": "ocorrencias/5879171a-147c-4275-9b9f-6872ac1f1a34.jpg",
+        "status": "em_andamento",
+        "responsavel": "Atendente José - P09",
+        "envolvidos": "supervisor e líder Rudder",
+        "acoes_tomadas": "Orientação - acionamento brigada",
+        "supervisor": "Atoa"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 5,
+    "fields": {
+        "data_ocorrencia": "2025-03-06",
+        "horario": "20:20:00",
+        "tipo": 6,
+        "local": 2,
+        "nome_local": "Rua A",
+        "relato": "Cliente em mal súbito, deslocado para sala de atendimento",
+        "imagem": "ocorrencias/10abde9c-091a-4a26-a6bd-26cfba70d171.jpg",
+        "status": "em_andamento",
+        "responsavel": "Sra. Joana",
+        "envolvidos": "supervisor de segurança, bombeira Dolores",
+        "acoes_tomadas": "Remoção, acionamento da Transul",
+        "supervisor": "Diego"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 6,
+    "fields": {
+        "data_ocorrencia": "2025-03-02",
+        "horario": "22:10:00",
+        "tipo": 16,
+        "local": 12,
+        "nome_local": "Kopenhagen",
+        "relato": "lojista efetuando serviço sem autorização.",
+        "imagem": "ocorrencias/20190621_130040.jpg",
+        "status": "em_andamento",
+        "responsavel": "Aida",
+        "envolvidos": "supervisor, bombeiro",
+        "acoes_tomadas": "Paralização do serviço e orientação",
+        "supervisor": "Ricardo"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 8,
+    "fields": {
+        "data_ocorrencia": "2025-03-10",
+        "horario": "12:53:00",
+        "tipo": 3,
+        "local": 2,
+        "nome_local": "Rua B",
+        "relato": "Clientes em discussão",
+        "imagem": "ocorrencias/133771805063502542_JWKSxPk.jpg",
+        "status": "em_andamento",
+        "responsavel": "Sr. Carlos",
+        "envolvidos": "supervisor de segurança, líder Rudder",
+        "acoes_tomadas": "Orientação aos clientes, busca e resguardo de imagens",
+        "supervisor": "Marciano"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 9,
+    "fields": {
+        "data_ocorrencia": "2025-03-09",
+        "horario": "12:58:00",
+        "tipo": 5,
+        "local": 3,
+        "nome_local": "Frente ao Tirol",
+        "relato": "No dia 10 de março de 2025, por volta das 18h45, um grupo de adolescentes entrou no shopping e começou a correr e gritar pelos corredores, desrespeitando os demais clientes. Os jovens adentraram a loja \"Eletrônicos Top\" e começaram a manusear os celulares em exposição, desativando os alarmes e tentando fazer ligações para os seus amigos. O vendedor solicitou que eles parassem, porém eles começaram a zombar dele e afirmaram que ele não tinha autoridade sobre ninguém. Um dos adolescentes até pegou um fone de ouvido e colocou-o no bolso, como se fosse levá-lo sem pagar. Quando o segurança chegou, eles tentaram disfarçar suas ações, alegando que não estavam fazendo nada, porém um cliente já havia presenciado tudo e alertou o funcionário. Quando o segurança afirmou que chamaria a polícia, eles fugiram do shopping, rindo e gritando.",
+        "imagem": "ocorrencias/20190621_130040_gipE4Lg.jpg",
+        "status": "em_andamento",
+        "responsavel": "Lilica",
+        "envolvidos": "supervisor de segurança",
+        "acoes_tomadas": "O vendedor tentou falar com os jovens para que respeitassem a loja, mas eles zombaram dele.\nA segurança foi acionada quando os clientes começaram a se sentir incomodados.\nUm cliente testemunhou um dos garotos tentando roubar um fone e avisou o funcionário.\nOs jovens fugiram do shopping antes da chegada da polícia.\nA gerência anotou tudo e enviou um relatório para o setor administrativo para avaliar se era caso de denúncia.",
+        "supervisor": "Carlos"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 10,
+    "fields": {
+        "data_ocorrencia": "2025-03-10",
+        "horario": "15:27:00",
+        "tipo": 11,
+        "local": 19,
+        "nome_local": "Elevador da doca 1",
+        "relato": "elevador da doca 1 com problema",
+        "imagem": "ocorrencias/brasil-bolsa-de-valores-chega-a-100-mil-pontos-pela-primeira-vez-na-historia_glF2fC9.jpg",
+        "status": "em_andamento",
+        "responsavel": "Daucio",
+        "envolvidos": "supervisor - manutenção",
+        "acoes_tomadas": "abertura - chamado - 15151, isolamento do local - comunicação",
+        "supervisor": "Jorge"
+    }
+},
+{
+    "model": "ocorrencias.ocorrencia",
+    "pk": 11,
+    "fields": {
+        "data_ocorrencia": "2025-03-09",
+        "horario": "21:30:00",
+        "tipo": 42,
+        "local": 1,
+        "nome_local": "Moda Atual",
+        "relato": "Em 10 de março de 2025, aproximadamente às 15h30, um cliente adentrou a loja \"Moda Atual\" e iniciou uma perturbação, expressando insatisfação com um problema relativo a uma calça que ele alegava ter adquirido uma semana antes. Ele elevou o tom de voz e demonstrou irritação, insistindo que a calça estava se rasgando injustificadamente e demandava reembolso imediato. A vendedora tentou elucidar que a loja só efetuaria a substituição do produto mediante a apresentação do comprovante fiscal. Contudo, a explicação apenas exacerbou o estado emocional do cliente, que iniciou uma série de insultos e ameaçou notificar a polícia. Este episódio alarmou os demais clientes presentes na loja, ocasionando a queda de algumas peças de roupa no chão por um deles, que acabou por sair às pressas. A segurança foi acionada e, já no local, tentou persuadir o cliente a se acalmar. No entanto, ele ignorou as tentativas de diálogo e começou a golpear o balcão de roupas. Após muita resistência, ele foi removido da loja, ainda exaltado, ameaçando causar um incidente ainda maior.",
+        "imagem": "ocorrencias/5879171a-147c-4275-9b9f-6872ac1f1a34_MMy9cSJ.jpg",
+        "status": "em_andamento",
+        "responsavel": "Joaquim",
+        "envolvidos": "supervisor de segurança",
+        "acoes_tomadas": "A vendedora tentou dialogar com o cliente para solucionar o problema, contudo, suas tentativas foram infrutíferas. Rapidamente, a equipe de segurança interveio na tentativa de apaziguar a situação, porém, ele não colaborou. Embora o cliente tenha sido retirado da loja, ele continuou manifestando sua indignação no interior do shopping. A gerente registrou o ocorrido integralmente e encaminhou para o setor administrativo para avaliação. Após o incidente, foram feitas tentativas de contato com o cliente por telefone para averiguar se ele havia se tranquilizado e estava disposto a resolver o problema de maneira adequada.",
+        "supervisor": "Oscar"
+    }
+},
+{
+    "model": "ocorrencias.configuracaoautomacao",
+    "pk": 1,
+    "fields": {
+        "emails_destinatarios": "jgcanil@hotmail.com,jorge@pontalshopping.com.br",
+        "assunto": "Sinopse Diária -",
+        "mensagem": "Segue, anexo, sinopse diária.",
+        "horario_envio": "08:30:00"
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 1,
+    "fields": {
+        "data_execucao": "2025-03-06T16:36:26.578Z",
+        "status": "Erro",
+        "detalhes": "Nenhuma ocorrência encontrada para 05/03/2025."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 2,
+    "fields": {
+        "data_execucao": "2025-03-06T16:39:41.727Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado com sucesso para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 3,
+    "fields": {
+        "data_execucao": "2025-03-06T16:41:31.881Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado com sucesso para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 4,
+    "fields": {
+        "data_execucao": "2025-03-06T16:41:36.298Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado com sucesso para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 5,
+    "fields": {
+        "data_execucao": "2025-03-08T02:04:30.312Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 6,
+    "fields": {
+        "data_execucao": "2025-03-08T02:42:25.827Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 7,
+    "fields": {
+        "data_execucao": "2025-03-08T13:32:25.066Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 8,
+    "fields": {
+        "data_execucao": "2025-03-08T13:32:31.430Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 9,
+    "fields": {
+        "data_execucao": "2025-03-08T13:32:37.564Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 10,
+    "fields": {
+        "data_execucao": "2025-03-08T13:32:43.574Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 11,
+    "fields": {
+        "data_execucao": "2025-03-08T13:32:49.686Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 12,
+    "fields": {
+        "data_execucao": "2025-03-08T14:07:39.763Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 13,
+    "fields": {
+        "data_execucao": "2025-03-08T14:20:34.649Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 14,
+    "fields": {
+        "data_execucao": "2025-03-08T15:29:24.602Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com, jorge@pontalshopping.com.br."
+    }
+},
+{
+    "model": "ocorrencias.logsinopse",
+    "pk": 15,
+    "fields": {
+        "data_execucao": "2025-03-08T15:33:57.361Z",
+        "status": "Sucesso",
+        "detalhes": "E-mail enviado para jgcanil@hotmail.com, jorge@pontalshopping.com.br."
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add ocorrencia",
+        "content_type": [
+            "ocorrencias",
+            "ocorrencia"
+        ],
+        "codename": "add_ocorrencia"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change ocorrencia",
+        "content_type": [
+            "ocorrencias",
+            "ocorrencia"
+        ],
+        "codename": "change_ocorrencia"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete ocorrencia",
+        "content_type": [
+            "ocorrencias",
+            "ocorrencia"
+        ],
+        "codename": "delete_ocorrencia"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view ocorrencia",
+        "content_type": [
+            "ocorrencias",
+            "ocorrencia"
+        ],
+        "codename": "view_ocorrencia"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add local",
+        "content_type": [
+            "ocorrencias",
+            "local"
+        ],
+        "codename": "add_local"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change local",
+        "content_type": [
+            "ocorrencias",
+            "local"
+        ],
+        "codename": "change_local"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete local",
+        "content_type": [
+            "ocorrencias",
+            "local"
+        ],
+        "codename": "delete_local"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view local",
+        "content_type": [
+            "ocorrencias",
+            "local"
+        ],
+        "codename": "view_local"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can add tipo ocorrencia",
+        "content_type": [
+            "ocorrencias",
+            "tipoocorrencia"
+        ],
+        "codename": "add_tipoocorrencia"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can change tipo ocorrencia",
+        "content_type": [
+            "ocorrencias",
+            "tipoocorrencia"
+        ],
+        "codename": "change_tipoocorrencia"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can delete tipo ocorrencia",
+        "content_type": [
+            "ocorrencias",
+            "tipoocorrencia"
+        ],
+        "codename": "delete_tipoocorrencia"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can view tipo ocorrencia",
+        "content_type": [
+            "ocorrencias",
+            "tipoocorrencia"
+        ],
+        "codename": "view_tipoocorrencia"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add task result",
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "codename": "add_taskresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change task result",
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "codename": "change_taskresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete task result",
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "codename": "delete_taskresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view task result",
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "codename": "view_taskresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add chord counter",
+        "content_type": [
+            "django_celery_results",
+            "chordcounter"
+        ],
+        "codename": "add_chordcounter"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change chord counter",
+        "content_type": [
+            "django_celery_results",
+            "chordcounter"
+        ],
+        "codename": "change_chordcounter"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete chord counter",
+        "content_type": [
+            "django_celery_results",
+            "chordcounter"
+        ],
+        "codename": "delete_chordcounter"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view chord counter",
+        "content_type": [
+            "django_celery_results",
+            "chordcounter"
+        ],
+        "codename": "view_chordcounter"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can add group result",
+        "content_type": [
+            "django_celery_results",
+            "groupresult"
+        ],
+        "codename": "add_groupresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+        "name": "Can change group result",
+        "content_type": [
+            "django_celery_results",
+            "groupresult"
+        ],
+        "codename": "change_groupresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+        "name": "Can delete group result",
+        "content_type": [
+            "django_celery_results",
+            "groupresult"
+        ],
+        "codename": "delete_groupresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+        "name": "Can view group result",
+        "content_type": [
+            "django_celery_results",
+            "groupresult"
+        ],
+        "codename": "view_groupresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+        "name": "Can add crontab",
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "codename": "add_crontabschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+        "name": "Can change crontab",
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "codename": "change_crontabschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+        "name": "Can delete crontab",
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "codename": "delete_crontabschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+        "name": "Can view crontab",
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "codename": "view_crontabschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+        "name": "Can add interval",
+        "content_type": [
+            "django_celery_beat",
+            "intervalschedule"
+        ],
+        "codename": "add_intervalschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+        "name": "Can change interval",
+        "content_type": [
+            "django_celery_beat",
+            "intervalschedule"
+        ],
+        "codename": "change_intervalschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+        "name": "Can delete interval",
+        "content_type": [
+            "django_celery_beat",
+            "intervalschedule"
+        ],
+        "codename": "delete_intervalschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+        "name": "Can view interval",
+        "content_type": [
+            "django_celery_beat",
+            "intervalschedule"
+        ],
+        "codename": "view_intervalschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+        "name": "Can add periodic task",
+        "content_type": [
+            "django_celery_beat",
+            "periodictask"
+        ],
+        "codename": "add_periodictask"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+        "name": "Can change periodic task",
+        "content_type": [
+            "django_celery_beat",
+            "periodictask"
+        ],
+        "codename": "change_periodictask"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+        "name": "Can delete periodic task",
+        "content_type": [
+            "django_celery_beat",
+            "periodictask"
+        ],
+        "codename": "delete_periodictask"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+        "name": "Can view periodic task",
+        "content_type": [
+            "django_celery_beat",
+            "periodictask"
+        ],
+        "codename": "view_periodictask"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+        "name": "Can add periodic task track",
+        "content_type": [
+            "django_celery_beat",
+            "periodictasks"
+        ],
+        "codename": "add_periodictasks"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+        "name": "Can change periodic task track",
+        "content_type": [
+            "django_celery_beat",
+            "periodictasks"
+        ],
+        "codename": "change_periodictasks"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+        "name": "Can delete periodic task track",
+        "content_type": [
+            "django_celery_beat",
+            "periodictasks"
+        ],
+        "codename": "delete_periodictasks"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+        "name": "Can view periodic task track",
+        "content_type": [
+            "django_celery_beat",
+            "periodictasks"
+        ],
+        "codename": "view_periodictasks"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+        "name": "Can add solar event",
+        "content_type": [
+            "django_celery_beat",
+            "solarschedule"
+        ],
+        "codename": "add_solarschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+        "name": "Can change solar event",
+        "content_type": [
+            "django_celery_beat",
+            "solarschedule"
+        ],
+        "codename": "change_solarschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+        "name": "Can delete solar event",
+        "content_type": [
+            "django_celery_beat",
+            "solarschedule"
+        ],
+        "codename": "delete_solarschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+        "name": "Can view solar event",
+        "content_type": [
+            "django_celery_beat",
+            "solarschedule"
+        ],
+        "codename": "view_solarschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 69,
+    "fields": {
+        "name": "Can add clocked",
+        "content_type": [
+            "django_celery_beat",
+            "clockedschedule"
+        ],
+        "codename": "add_clockedschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 70,
+    "fields": {
+        "name": "Can change clocked",
+        "content_type": [
+            "django_celery_beat",
+            "clockedschedule"
+        ],
+        "codename": "change_clockedschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 71,
+    "fields": {
+        "name": "Can delete clocked",
+        "content_type": [
+            "django_celery_beat",
+            "clockedschedule"
+        ],
+        "codename": "delete_clockedschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 72,
+    "fields": {
+        "name": "Can view clocked",
+        "content_type": [
+            "django_celery_beat",
+            "clockedschedule"
+        ],
+        "codename": "view_clockedschedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 73,
+    "fields": {
+        "name": "Can add configuracao automacao",
+        "content_type": [
+            "ocorrencias",
+            "configuracaoautomacao"
+        ],
+        "codename": "add_configuracaoautomacao"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 74,
+    "fields": {
+        "name": "Can change configuracao automacao",
+        "content_type": [
+            "ocorrencias",
+            "configuracaoautomacao"
+        ],
+        "codename": "change_configuracaoautomacao"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 75,
+    "fields": {
+        "name": "Can delete configuracao automacao",
+        "content_type": [
+            "ocorrencias",
+            "configuracaoautomacao"
+        ],
+        "codename": "delete_configuracaoautomacao"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 76,
+    "fields": {
+        "name": "Can view configuracao automacao",
+        "content_type": [
+            "ocorrencias",
+            "configuracaoautomacao"
+        ],
+        "codename": "view_configuracaoautomacao"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+        "name": "Can add Scheduled task",
+        "content_type": [
+            "django_q",
+            "schedule"
+        ],
+        "codename": "add_schedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+        "name": "Can change Scheduled task",
+        "content_type": [
+            "django_q",
+            "schedule"
+        ],
+        "codename": "change_schedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+        "name": "Can delete Scheduled task",
+        "content_type": [
+            "django_q",
+            "schedule"
+        ],
+        "codename": "delete_schedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+        "name": "Can view Scheduled task",
+        "content_type": [
+            "django_q",
+            "schedule"
+        ],
+        "codename": "view_schedule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 81,
+    "fields": {
+        "name": "Can add task",
+        "content_type": [
+            "django_q",
+            "task"
+        ],
+        "codename": "add_task"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 82,
+    "fields": {
+        "name": "Can change task",
+        "content_type": [
+            "django_q",
+            "task"
+        ],
+        "codename": "change_task"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 83,
+    "fields": {
+        "name": "Can delete task",
+        "content_type": [
+            "django_q",
+            "task"
+        ],
+        "codename": "delete_task"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 84,
+    "fields": {
+        "name": "Can view task",
+        "content_type": [
+            "django_q",
+            "task"
+        ],
+        "codename": "view_task"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 85,
+    "fields": {
+        "name": "Can add Failed task",
+        "content_type": [
+            "django_q",
+            "failure"
+        ],
+        "codename": "add_failure"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 86,
+    "fields": {
+        "name": "Can change Failed task",
+        "content_type": [
+            "django_q",
+            "failure"
+        ],
+        "codename": "change_failure"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 87,
+    "fields": {
+        "name": "Can delete Failed task",
+        "content_type": [
+            "django_q",
+            "failure"
+        ],
+        "codename": "delete_failure"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 88,
+    "fields": {
+        "name": "Can view Failed task",
+        "content_type": [
+            "django_q",
+            "failure"
+        ],
+        "codename": "view_failure"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 89,
+    "fields": {
+        "name": "Can add Successful task",
+        "content_type": [
+            "django_q",
+            "success"
+        ],
+        "codename": "add_success"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 90,
+    "fields": {
+        "name": "Can change Successful task",
+        "content_type": [
+            "django_q",
+            "success"
+        ],
+        "codename": "change_success"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 91,
+    "fields": {
+        "name": "Can delete Successful task",
+        "content_type": [
+            "django_q",
+            "success"
+        ],
+        "codename": "delete_success"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 92,
+    "fields": {
+        "name": "Can view Successful task",
+        "content_type": [
+            "django_q",
+            "success"
+        ],
+        "codename": "view_success"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 93,
+    "fields": {
+        "name": "Can add Queued task",
+        "content_type": [
+            "django_q",
+            "ormq"
+        ],
+        "codename": "add_ormq"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 94,
+    "fields": {
+        "name": "Can change Queued task",
+        "content_type": [
+            "django_q",
+            "ormq"
+        ],
+        "codename": "change_ormq"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 95,
+    "fields": {
+        "name": "Can delete Queued task",
+        "content_type": [
+            "django_q",
+            "ormq"
+        ],
+        "codename": "delete_ormq"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 96,
+    "fields": {
+        "name": "Can view Queued task",
+        "content_type": [
+            "django_q",
+            "ormq"
+        ],
+        "codename": "view_ormq"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 97,
+    "fields": {
+        "name": "Can add log sinopse",
+        "content_type": [
+            "ocorrencias",
+            "logsinopse"
+        ],
+        "codename": "add_logsinopse"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 98,
+    "fields": {
+        "name": "Can change log sinopse",
+        "content_type": [
+            "ocorrencias",
+            "logsinopse"
+        ],
+        "codename": "change_logsinopse"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 99,
+    "fields": {
+        "name": "Can delete log sinopse",
+        "content_type": [
+            "ocorrencias",
+            "logsinopse"
+        ],
+        "codename": "delete_logsinopse"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 100,
+    "fields": {
+        "name": "Can view log sinopse",
+        "content_type": [
+            "ocorrencias",
+            "logsinopse"
+        ],
+        "codename": "view_logsinopse"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 101,
+    "fields": {
+        "name": "Can add agendamento",
+        "content_type": [
+            "ocorrencias",
+            "agendamento"
+        ],
+        "codename": "add_agendamento"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 102,
+    "fields": {
+        "name": "Can change agendamento",
+        "content_type": [
+            "ocorrencias",
+            "agendamento"
+        ],
+        "codename": "change_agendamento"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 103,
+    "fields": {
+        "name": "Can delete agendamento",
+        "content_type": [
+            "ocorrencias",
+            "agendamento"
+        ],
+        "codename": "delete_agendamento"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 104,
+    "fields": {
+        "name": "Can view agendamento",
+        "content_type": [
+            "ocorrencias",
+            "agendamento"
+        ],
+        "codename": "view_agendamento"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$8Lgb9k7ouiwGcKiHkmpLWe$doqTtcJ7puCghEx74eNTDIaza4fCIIePZM5N/LBMy3M=",
+        "last_login": "2025-03-10T18:27:10.333Z",
+        "is_superuser": true,
+        "username": "jpizzutti",
+        "first_name": "",
+        "last_name": "",
+        "email": "jorge@pontalshopping.com.br",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-03-02T17:48:05.774Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2025-03-07T02:06:53.665Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "clockedschedule"
+        ],
+        "object_id": "1",
+        "object_repr": "2025-03-06 23:06:45-03:00",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2025-03-08T01:35:04.464Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "1",
+        "object_repr": "10 23 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2025-03-08T02:18:35.182Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "4",
+        "object_repr": "17 23 07 03 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Dia(s) do M\\u00eas\", \"M\\u00eas(es) do Ano\", \"Dia(s) da Semana\", \"Fuso Hor\\u00e1rio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2025-03-08T02:18:54.444Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "2",
+        "object_repr": "19 23 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Minuto(s)\", \"Hora(s)\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2025-03-08T02:22:16.434Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "4",
+        "object_repr": "23 23 07 03 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Minuto(s)\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2025-03-08T02:41:14.090Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "3",
+        "object_repr": "40 22 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2025-03-08T02:41:20.988Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "1",
+        "object_repr": "10 23 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2025-03-08T02:41:25.715Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "2",
+        "object_repr": "19 23 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2025-03-08T02:41:30.282Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "5",
+        "object_repr": "30 23 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2025-03-08T02:41:34.205Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "6",
+        "object_repr": "35 23 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2025-03-08T02:41:38.708Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "4",
+        "object_repr": "23 23 07 03 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2025-03-08T02:49:31.728Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "7",
+        "object_repr": "50 23 07 03 4 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2025-03-08T02:51:03.291Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "7",
+        "object_repr": "50 23 07 03 5 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Dia(s) da Semana\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2025-03-08T02:51:27.327Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "7",
+        "object_repr": "52 23 07 03 5 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Minuto(s)\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2025-03-08T02:52:01.067Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "7",
+        "object_repr": "52 23 07 03 5 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2025-03-08T03:04:14.322Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "9",
+        "object_repr": "05 0 8 3 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Minuto(s)\", \"Dia(s) do M\\u00eas\", \"M\\u00eas(es) do Ano\", \"Dia(s) da Semana\", \"Fuso Hor\\u00e1rio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2025-03-08T03:15:53.194Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "11",
+        "object_repr": "16 00 1-31 3 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Minuto(s)\", \"Dia(s) do M\\u00eas\", \"M\\u00eas(es) do Ano\", \"Dia(s) da Semana\", \"Fuso Hor\\u00e1rio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2025-03-08T03:16:11.801Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "9",
+        "object_repr": "05 0 8 3 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2025-03-08T03:18:43.201Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "10",
+        "object_repr": "4 0 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2025-03-08T03:18:49.603Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "12",
+        "object_repr": "14 00 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2025-03-08T03:18:55.268Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "8",
+        "object_repr": "56 23 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2025-03-08T03:18:55.268Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "7",
+        "object_repr": "52 23 07 03 5 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2025-03-08T03:18:55.283Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "11",
+        "object_repr": "16 00 1-31 3 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2025-03-08T03:18:55.285Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "9",
+        "object_repr": "05 0 8 3 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2025-03-08T03:23:24.507Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "14",
+        "object_repr": "25 00 08 03 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2025-03-08T03:24:08.586Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "13",
+        "object_repr": "22 00 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2025-03-08T13:38:07.598Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "13",
+        "object_repr": "39 10 * * * (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Minuto(s)\", \"Hora(s)\", \"Fuso Hor\\u00e1rio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2025-03-08T14:57:01.944Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "16",
+        "object_repr": "45 00 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2025-03-08T14:57:01.951Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "13",
+        "object_repr": "39 10 * * * (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2025-03-08T14:57:01.958Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "17",
+        "object_repr": "31 11 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2025-03-08T14:57:01.968Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "15",
+        "object_repr": "30 23 * * * (m/h/dM/MY/d) UTC",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2025-03-08T14:57:01.975Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_beat",
+            "crontabschedule"
+        ],
+        "object_id": "14",
+        "object_repr": "25 00 08 03 6 (m/h/dM/MY/d) America/Sao_Paulo",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.677Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "15",
+        "object_repr": "<Task: f1499455-3a9d-4d3c-a26d-ff5a51a2765c (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.687Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "14",
+        "object_repr": "<Task: 81cb2f1c-88c3-48db-b6da-bd9610fc6dee (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.694Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "13",
+        "object_repr": "<Task: 55827873-1040-4f40-a700-53ac927356f6 (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.701Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "12",
+        "object_repr": "<Task: 196bbd77-54ea-4468-9cf0-582698ded466 (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.706Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "11",
+        "object_repr": "<Task: f755d50a-274b-4ec1-9639-54555d5f498b (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.712Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "10",
+        "object_repr": "<Task: bcb88075-cd45-45b6-a13b-86a0f5a6f675 (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.720Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "9",
+        "object_repr": "<Task: e883319d-f66f-4614-86bf-811c26345679 (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.725Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "8",
+        "object_repr": "<Task: 6c44fcd4-2a4d-4738-9a68-c89d8633e14e (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.732Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "7",
+        "object_repr": "<Task: a56c47aa-e6d1-4978-a969-8f5f9182b116 (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.737Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "6",
+        "object_repr": "<Task: b986563d-142e-4595-9dbc-88a41bd455bb (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.743Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "5",
+        "object_repr": "<Task: 3529af04-9d1e-4567-aeea-9a3ec033e2fe (SUCCESS)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.749Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "4",
+        "object_repr": "<Task: e6ca871f-3ce6-4ad5-a294-b94a0399362c (FAILURE)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.755Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "3",
+        "object_repr": "<Task: e8abd17b-da6a-46d7-aa40-4e13c55fbce7 (FAILURE)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.762Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "2",
+        "object_repr": "<Task: ada18c2d-c4ee-432d-8007-bcb2cbeadbd3 (FAILURE)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2025-03-08T17:29:22.767Z",
+        "user": [
+            "jpizzutti"
+        ],
+        "content_type": [
+            "django_celery_results",
+            "taskresult"
+        ],
+        "object_id": "1",
+        "object_repr": "<Task: 005c1295-069a-462e-95ea-aa77e77016c5 (FAILURE)>",
+        "action_flag": 3,
+        "change_message": ""
+    }
+}
+]

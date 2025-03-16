@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">📋 Atendimentos Ambulatoriais</h2>
+
+    <!-- Cards de acumulado do ano -->
+    <div class="row text-center mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">📊 Atendimentos</h5>
+                    <h3>{{ acumulados.total_atendimentos|default:"0" }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-danger shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">🚑 Remoções</h5>
+                    <h3>{{ acumulados.total_remocoes|default:"0" }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">🛍️ Clientes</h5>
+                    <h3>{{ acumulados.total_clientes|default:"0" }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="card text-white bg-warning shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">🏬 Lojistas</h5>
+                    <h3>{{ acumulados.total_lojistas|default:"0" }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="card text-white bg-info shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">👨 Homens</h5>
+                    <h3>{{ acumulados.total_homens|default:"0" }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="card text-white bg-secondary shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">👩 Mulheres</h5>
+                    <h3>{{ acumulados.total_mulheres|default:"0" }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de alternância entre tabela e cards -->
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{% url 'adicionar_atendimento' %}" class="btn btn-primary">➕ Adicionar Atendimento</a>
+        <a href="?modo={% if modo_exibicao == 'tabela' %}cards{% else %}tabela{% endif %}" 
+           class="btn btn-secondary">
+           Ver como {% if modo_exibicao == 'tabela' %}Cards{% else %}Tabela{% endif %}
+        </a>
+    </div>
+
+    {% if modo_exibicao == 'tabela' %}
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Mês</th>
+                    <th>Atendimentos</th>
+                    <th>Ambulatorial</th>
+                    <th>Traumatológico</th>
+                    <th>Chamados</th>
+                    <th>Remoções</th>
+                    <th>Clientes</th>
+                    <th>Lojistas</th>
+                    <th>Homens</th>
+                    <th>Mulheres</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for atendimento in atendimentos %}
+                    <tr>
+                        <td>{{ atendimento.mes }}</td>
+                        <td>{{ atendimento.qtde_atendimentos }}</td>
+                        <td>{{ atendimento.ambulatorial }}</td>
+                        <td>{{ atendimento.traumatologico }}</td>
+                        <td>{{ atendimento.qtde_chamados }}</td>
+                        <td>{{ atendimento.qtde_remocoes }}</td>
+                        <td>{{ atendimento.qtde_clientes }}</td>
+                        <td>{{ atendimento.qtde_lojistas }}</td>
+                        <td>{{ atendimento.qtde_homens }}</td>
+                        <td>{{ atendimento.qtde_mulheres }}</td>
+                        <td>
+                            <a href="{% url 'editar_atendimento' atendimento.id %}" class="btn btn-warning">✏️ Editar</a>
+                            <a href="{% url 'excluir_atendimento' atendimento.id %}" class="btn btn-danger">🗑️ Excluir</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="11" class="text-center">Nenhum atendimento encontrado.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="row">
+            {% for atendimento in atendimentos %}
+                <div class="col-md-4">
+                    <div class="card shadow-sm mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">📅 {{ atendimento.mes }}</h5>
+                            <p class="card-text"><strong>Atendimentos:</strong> {{ atendimento.qtde_atendimentos }}</p>
+                            <p class="card-text"><strong>Ambulatorial:</strong> {{ atendimento.ambulatorial }}</p>
+                            <p class="card-text"><strong>Traumatológico:</strong> {{ atendimento.traumatologico }}</p>
+                            <p class="card-text"><strong>Chamados:</strong> {{ atendimento.qtde_chamados }}</p>
+                            <p class="card-text"><strong>Remoções:</strong> {{ atendimento.qtde_remocoes }}</p>
+                            <p class="card-text"><strong>Clientes:</strong> {{ atendimento.qtde_clientes }}</p>
+                            <p class="card-text"><strong>Lojistas:</strong> {{ atendimento.qtde_lojistas }}</p>
+                            <p class="card-text"><strong>Homens:</strong> {{ atendimento.qtde_homens }}</p>
+                            <p class="card-text"><strong>Mulheres:</strong> {{ atendimento.qtde_mulheres }}</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'editar_atendimento' atendimento.id %}" class="btn btn-warning">✏️ Editar</a>
+                                <a href="{% url 'excluir_atendimento' atendimento.id %}" class="btn btn-danger">🗑️ Excluir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center">Nenhum atendimento encontrado.</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

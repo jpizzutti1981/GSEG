@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <!-- MENSAGENS DE ALERTA -->
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% else %}alert-info{% endif %} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <!-- FORMULÁRIO DE CONFIGURAÇÃO -->
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h2>Configuração de Automação</h2>
+        </div>
+        <div class="card-body">
+          <form method="POST" class="row g-3">
+            {% csrf_token %}
+
+            <!-- Campo E-mails Destinatários -->
+            <div class="row mb-3">
+              <label for="id_emails_destinatarios" class="col-sm-3 col-form-label fw-bold">E-mails destinatários:</label>
+              <div class="col-sm-9">
+                <textarea id="id_emails_destinatarios" name="emails_destinatarios" class="form-control" rows="1">{{ configuracao.emails_destinatarios }}</textarea>
+                <small class="text-muted">Separe os e-mails por vírgula</small>
+              </div>
+            </div>
+
+            <!-- Campo Assunto -->
+            <div class="row mb-3">
+              <label for="id_assunto" class="col-sm-3 col-form-label fw-bold">Assunto:</label>
+              <div class="col-sm-9">
+                <input type="text" id="id_assunto" name="assunto" class="form-control" value="{{ configuracao.assunto }}">
+              </div>
+            </div>
+
+            <!-- Campo Mensagem -->
+            <div class="row mb-3">
+              <label for="id_mensagem" class="col-sm-3 col-form-label fw-bold">Mensagem:</label>
+              <div class="col-sm-9">
+                <textarea id="id_mensagem" name="mensagem" class="form-control" rows="1">{{ configuracao.mensagem }}</textarea>
+              </div>
+            </div>
+
+            <!-- Campo Horário de Envio -->
+            <div class="row mb-3">
+              <label for="id_horario_envio" class="col-sm-3 col-form-label fw-bold">Horário envio:</label>
+              <div class="col-sm-9">
+                <input type="time" id="id_horario_envio" name="horario_envio" class="form-control" value="{{ configuracao.horario_envio }}">
+                <small class="text-muted">Horário do envio diário</small>
+              </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="row mb-3">
+              <div class="col-sm-9 offset-sm-3">
+                <button type="submit" class="btn btn-success">Salvar Configuração</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de Agendamentos -->
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-secondary text-white text-center">
+          <h3>Agendamentos Ativos</h3>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead class="table-light">
+              <tr>
+                <th>Horário</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if configuracao.horario_envio %}
+                <tr>
+                  <td>{{ configuracao.horario_envio }}</td>
+                  <td>
+                    <a href="{% url 'editar_agendamento' configuracao.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'excluir_agendamento' configuracao.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja excluir este agendamento?')">Excluir</a>
+                  </td>
+                </tr>
+              {% else %}
+                <tr>
+                  <td colspan="2" class="text-center">Nenhum agendamento encontrado.</td>
+                </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

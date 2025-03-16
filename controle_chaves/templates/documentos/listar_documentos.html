@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">📜 Documentos Fundamentais</h2>
+
+    <a href="{% url 'adicionar_documento' %}" class="btn btn-primary mb-3">➕ Adicionar Documento</a>
+
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Emissão</th>
+                <th>Vencimento</th>
+                <th>Entidade</th>
+                <th>Função</th>
+                <th>Status</th>
+                <th>Área</th>
+                <th>Arquivo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for documento in documentos %}
+                <tr>
+                    <td>{{ documento.nome_documento }}</td>
+                    <td>{{ documento.emissao|date:"d/m/Y" }}</td>
+                    <td>{{ documento.vencimento|date:"d/m/Y" }}</td>
+                    <td>{{ documento.entidade_emissora }}</td>
+                    <td>{{ documento.funcao_documento }}</td>
+                    <td>
+                        {% if documento.status == "No Prazo" %}
+                            <span class="badge bg-success">🟢 No Prazo</span>
+                        {% elif documento.status == "Renovar" %}
+                            <span class="badge bg-warning text-dark">🟡 Renovar</span>
+                        {% else %}
+                            <span class="badge bg-danger">🔴 Vencido</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ documento.area }}</td>
+                    <td>
+                        {% if documento.arquivo %}
+                            <a href="{{ documento.arquivo.url }}" target="_blank" class="btn btn-info btn-sm">
+                                📄 Ver Imagem
+                        {% else %}
+                            ❌ Sem Documento
+                        {% endif %}
+                    </td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="{% url 'editar_documento' documento.id %}" class="btn btn-warning btn-sm">✏️ Editar</a>
+                            
+                            <!-- Botão para abrir modal de exclusão -->
+                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal{{ documento.id }}">
+                                🗑️ Excluir
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- 🔹 Modal de Confirmação -->
+                <div class="modal fade" id="confirmDeleteModal{{ documento.id }}" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmDeleteLabel">🛑 Confirmar Exclusão</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Tem certeza que deseja excluir <strong>{{ documento.nome_documento }}</strong>? Esta ação não pode ser desfeita.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <a href="{% url 'excluir_documento' documento.id %}" class="btn btn-danger">🗑️ Confirmar Exclusão</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

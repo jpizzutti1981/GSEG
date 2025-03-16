@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento Celery</title>
+</head>
+<body>
+    <h1>Monitoramento de Tarefas Celery</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Status</th>
+            <th>Data de Conclusão</th>
+            <th>Resultado</th>
+        </tr>
+        {% for tarefa in tarefas %}
+        <tr>
+            <td>{{ tarefa.task_id }}</td>
+            <td>{{ tarefa.task_name }}</td>
+            <td>{{ tarefa.status }}</td>
+            <td>{{ tarefa.date_done }}</td>
+            <td>{{ tarefa.result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

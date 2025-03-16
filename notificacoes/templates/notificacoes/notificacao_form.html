@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h2>Nova Notificação de Loja</h2>
+        </div>
+        <div class="card-body">
+          
+          <!-- ✅ EXIBE MENSAGEM DE SUCESSO OU ERRO -->
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Selecionar a Loja -->
+            <div class="mb-3">
+              <label for="id_loja" class="form-label fw-bold">🏬 Loja:</label>
+              {{ form.loja }}
+            </div>
+
+            <!-- Selecionar Motivo -->
+            <div class="mb-3">
+              <label for="id_motivo" class="form-label fw-bold">⚠️ Motivo:</label>
+              {{ form.motivo }}
+            </div>
+
+            <div class="row">
+              <!-- Data da Ocorrência -->
+              <div class="col-md-6 mb-3">
+                <label for="id_data_ocorrencia" class="form-label fw-bold">📅 Data da Ocorrência:</label>
+                {{ form.data_ocorrencia }}
+              </div>
+
+              <!-- Hora da Ocorrência -->
+              <div class="col-md-6 mb-3">
+                <label for="id_hora_ocorrencia" class="form-label fw-bold">⏰ Hora da Ocorrência:</label>
+                {{ form.hora_ocorrencia }}
+              </div>
+            </div>
+
+            <!-- Campo Descrição -->
+            <div class="mb-3">
+              <label for="id_descricao" class="form-label fw-bold">📝 Descrição:</label>
+              {{ form.descricao }}
+            </div>
+
+            <!-- Upload de Imagem -->
+            <div class="mb-3">
+              <label for="id_imagem" class="form-label fw-bold">📷 Anexar Imagem:</label>
+              {{ form.imagem }}
+            </div>
+
+            <!-- Notificado Por -->
+            <div class="mb-3">
+              <label for="id_notificado_por" class="form-label fw-bold">👤 Notificado Por:</label>
+              {{ form.notificado_por }}
+            </div>
+
+            <!-- Botões -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-success">✅ Salvar Notificação</button>
+              <a href="{% url 'listar_notificacoes' %}" class="btn btn-secondary">❌ Cancelar</a>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
