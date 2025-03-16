@@ -58,7 +58,11 @@ def enviar_mensagem_telegram(mensagem, imagem_caminho=None):
                     requests.post(url_imagem, data={"chat_id": TELEGRAM_CHAT_ID}, files={"photo": imagem})
 
 # 🔹 Configura para português (Brasil)
-locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
+try:
+    locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
+except locale.Error:
+    locale.setlocale(locale.LC_TIME, 'C')  # Fallback para um formato padrão
+
 
 
 def remover_acentos(texto):
