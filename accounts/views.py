@@ -10,7 +10,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            messages.success(request, "Login realizado com sucesso!")
+            messages.success(request, "Bem-vindo ao sistema de gestão!")
             return redirect("listar_ocorrencias")
         
         else:
