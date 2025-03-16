@@ -103,8 +103,8 @@ def gerar_pdf_notificacao(notificacao):
     # 🔹 Renderiza o HTML para PDF com a URL correta da imagem
     html_content = render_to_string("notificacoes/notificacao_pdf.html", {
         "notificacao": notificacao,
-        "logo_esquerda": f"file:///{logo_esquerda_path.replace('\\', '/')}" if logo_esquerda_path else None,
-        "logo_direita": f"file:///{logo_direita_path.replace('\\', '/')}" if logo_direita_path else None,
+        "logo_esquerda": f"file:///{logo_esquerda_path.replace(os.sep, '/')}" if logo_esquerda_path else None,
+        "logo_direita": f"file:///{logo_direita_path.replace(os.sep, '/')}" if logo_direita_path else None,
         "imagem_ocorrencia": imagem_ocorrencia_url,  # 🔹 Usa a URL pública do Cloudinary
         "data_formatada_extenso": data_formatada_extenso  # 🔹 Envia a data formatada para o HTML
     })

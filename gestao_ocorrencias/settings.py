@@ -258,18 +258,27 @@ LOGOUT_REDIRECT_URL = '/accounts/login/'
 import os
 from dotenv import load_dotenv
 
-# Carregar variáveis do .env
-load_dotenv()
+load_dotenv()  # 🔹 Carrega o .env local se existir
 
-# Definir a variável da API Key
+# 📌 Pegando credenciais do ambiente
+SECRET_KEY = os.getenv("SECRET_KEY", "chave_padrao")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+CLOUDINARY_CLOUD_NAME = os.getenv("CLOUDINARY_CLOUD_NAME")
+CLOUDINARY_API_KEY = os.getenv("CLOUDINARY_API_KEY")
+CLOUDINARY_API_SECRET = os.getenv("CLOUDINARY_API_SECRET")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
-# Verificar se a chave foi carregada corretamente
+# 📌 Verifica se credenciais estão corretas
 if not OPENAI_API_KEY:
-    raise ValueError("⚠️ OPENAI_API_KEY não foi definida! Verifique o arquivo .env")
+    raise ValueError("⚠️ OPENAI_API_KEY não foi definida! Verifique o Render.")
 
-TELEGRAM_BOT_TOKEN = "7829657282:AAF85EKDwYtJE-XE27C2O2yxf4OoZR7-aiY"
-TELEGRAM_CHAT_ID = "-1002331581799"
+if not SECRET_KEY:
+    raise ValueError("⚠️ SECRET_KEY não foi definida! Verifique o Render.")
+
+if not TELEGRAM_BOT_TOKEN:
+    raise ValueError("⚠️ TELEGRAM_BOT_TOKEN não foi definida! Verifique o Render.")
+
 
 import os
 from dotenv import load_dotenv
