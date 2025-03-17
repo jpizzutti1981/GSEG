@@ -223,9 +223,10 @@ def editar_ocorrencia(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "✅ Ocorrência atualizada com sucesso!")
-            return redirect('listar_ocorrencias')
+            return redirect("listar_ocorrencias")  # 🔹 Redireciona para a lista de ocorrências
         else:
             messages.error(request, "❌ Erro ao salvar a ocorrência. Verifique os dados.")
+
     else:
         form = OcorrenciaForm(instance=ocorrencia)
 
