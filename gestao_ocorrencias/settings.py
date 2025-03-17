@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure--ofvqqt+_apiq^)pv@1ra3m-2+74f1(iqgv72w2d)y@dodgak1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gseg.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ["gseg.onrender.com", "127.0.0.1"]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # Application definition
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -163,12 +166,12 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Configuração correta para arquivos estáticos no Render
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# 🔹 Configuração correta para arquivos estáticos
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # Pasta onde os arquivos estão no projeto
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")   # Pasta onde serão coletados no deploy
 
-# Configuração para arquivos de mídia (imagens)
+# 🔹 Configuração para arquivos de mídia (imagens)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
