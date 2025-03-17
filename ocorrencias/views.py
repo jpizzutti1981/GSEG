@@ -195,6 +195,7 @@ def cadastrar_ocorrencia(request):
                 f"🕒 Horário: {ocorrencia.horario.strftime('%H:%M')}\n"
                 f"📍 Local: {ocorrencia.local}\n"
                 f"📝 Relato: {ocorrencia.relato}\n"
+                f"🎯 Ações Tomadas: {ocorrencia.acoes_tomadas}\n"
                 f"👨‍💼 Responsável: {ocorrencia.supervisor}"
             )
 
@@ -221,11 +222,10 @@ def editar_ocorrencia(request, pk):
         form = OcorrenciaForm(request.POST, request.FILES, instance=ocorrencia)
         if form.is_valid():
             form.save()
-            messages.success(request, "Ocorrência editada com sucesso!")  # ✅ Mensagem de sucesso
-            return redirect("listar_ocorrencias")  # ✅ Redireciona para a listagem
+            messages.success(request, "✅ Ocorrência atualizada com sucesso!")
+            return redirect('listar_ocorrencias')
         else:
-            messages.error(request, "Erro ao salvar a ocorrência. Verifique os dados.")
-
+            messages.error(request, "❌ Erro ao salvar a ocorrência. Verifique os dados.")
     else:
         form = OcorrenciaForm(instance=ocorrencia)
 
@@ -323,35 +323,34 @@ def sinopse(request):
         'data_fim': data_fim
     })
 
-
 # -----------------------------------------------------------------------------
-# 📌 Geração do PDF da Sinopse com Imagens e Data Formatada
+# 📌 Gerar Sinopse 
 def gerar_sinopse_pdf(request=None, data_inicio=None, data_fim=None):
     buffer = io.BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=letter)
     elements = []
     styles = getSampleStyleSheet()
 
-    # 🔹 Ajuste para Logos
-    logo_esquerdo = "static/images/logo.png"
-    logo_direito = "static/images/logoad3.png"
+    # 🔹 Definir Caminho do Arquivo Temporário
+    temp_dir = "/tmp" if os.name != "nt" else os.environ.get("TEMP", "C:\\Temp")
+    if not os.path.exists(temp_dir):
+        os.makedirs(temp_dir)
 
-    # 🔹 Se data não for passada, assume o dia anterior
+    # 🔹 Definir Datas
     if not data_inicio or not data_fim:
         ontem = datetime.today() - timedelta(days=1)
         data_inicio = data_fim = ontem.strftime("%Y-%m-%d")
 
-    # 🔹 Formata a data para exibição no título e no nome do arquivo
     data_formatada = datetime.strptime(data_inicio, "%Y-%m-%d").strftime("%d/%m/%Y")
     data_nome_arquivo = datetime.strptime(data_inicio, "%Y-%m-%d").strftime("%d-%m-%Y")
-
     nome_arquivo_pdf = f"Sinopse_Diária_{data_nome_arquivo}.pdf"
+    caminho_pdf = os.path.join(temp_dir, nome_arquivo_pdf)
+
+    # 🔹 Criar Documento PDF
+    doc = SimpleDocTemplate(caminho_pdf, pagesize=letter)
 
     # 🔹 Cabeçalho
     header_data = [
-        [Image(logo_esquerdo, width=100, height=40),
-         Paragraph(f"<b>SINOPSE DIÁRIA - {data_formatada}</b>", styles["Title"]),
-         Image(logo_direito, width=50, height=50)]
+        ["", Paragraph(f"<b>SINOPSE DIÁRIA - {data_formatada}</b>", styles["Title"]), ""]
     ]
     header_table = Table(header_data, colWidths=[150, 250, 150])
     header_table.setStyle(TableStyle([
@@ -361,101 +360,72 @@ def gerar_sinopse_pdf(request=None, data_inicio=None, data_fim=None):
     elements.append(header_table)
     elements.append(Spacer(1, 15))
 
-    # 🔹 Criar estilos personalizados
-    justified_style = ParagraphStyle(
-        'Justified',
-        parent=styles['Normal'],
-        alignment=4,  # Justificado
-        fontSize=10,
-        spaceAfter=5
-    )
-
-    title_style = ParagraphStyle(
-        'Title',
-        parent=styles['Normal'],
-        fontSize=12,
-        spaceAfter=10,
-        keepWithNext=True  # 🔹 Mantém o título na mesma página do conteúdo
-    )
-
-    # 🔹 Buscar Ocorrências no banco de dados
+    # 🔹 Buscar Ocorrências
     ocorrencias = Ocorrencia.objects.filter(data_ocorrencia__range=[data_inicio, data_fim])
-
-    # 🔹 Lista para armazenar caminhos das imagens temporárias
     imagens_temp = []
 
     for ocorrencia in ocorrencias:
-        # 🔹 Criar cabeçalho para cada ocorrência
         elements.append(Spacer(1, 10))
-        elements.append(Paragraph(f"<b>ID:</b> {ocorrencia.id} - <b>{ocorrencia.tipo}</b> | {ocorrencia.local}", title_style))
+        elements.append(Paragraph(f"<b>ID:</b> {ocorrencia.id} - <b>{ocorrencia.tipo}</b> | {ocorrencia.local}", styles["Title"]))
         elements.append(Spacer(1, 5))
 
-        # 🔹 Criar tabela de informações
         dados_ocorrencia = [
             ["Data:", ocorrencia.data_ocorrencia.strftime("%d/%m/%Y")],
             ["Horário:", ocorrencia.horario.strftime("%H:%M")],
-            ["Relato:", Paragraph(ocorrencia.relato, justified_style)],
-            ["Ações Tomadas:", Paragraph(ocorrencia.acoes_tomadas, justified_style)],
+            ["Relato:", Paragraph(ocorrencia.relato, styles["Normal"])],
+            ["Ações Tomadas:", Paragraph(ocorrencia.acoes_tomadas, styles["Normal"])],
             ["Supervisor:", ocorrencia.supervisor],
         ]
-
         table = Table(dados_ocorrencia, colWidths=[100, 400])
         table.setStyle(TableStyle([
             ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('BOTTOMPADDING', (0, 0), (-1, 0), 5),
-            ('BACKGROUND', (0, 0), (0, -1), colors.lightgrey),  # Cinza na primeira coluna
-            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+            ('BACKGROUND', (0, 0), (0, -1), colors.lightgrey),
             ('GRID', (0, 0), (-1, -1), 1, colors.black),
         ]))
-
         elements.append(table)
         elements.append(Spacer(1, 15))
 
-        # 🔹 Adicionar Imagem da Ocorrência (se existir e for uma URL válida)
+        # 🔹 Baixar Imagem Temporária
         if ocorrencia.imagem:
             try:
-                img_url = ocorrencia.imagem.url  # 🔹 Pega a URL do Cloudinary
-
-                # 🔹 Criar um arquivo temporário
+                img_url = ocorrencia.imagem.url
                 temp_img = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg")
                 temp_img_path = temp_img.name
+                temp_img.close()
 
-                # 🔹 Baixa a imagem temporariamente para inserir no PDF
                 response = requests.get(img_url, stream=True)
                 if response.status_code == 200:
                     with open(temp_img_path, "wb") as img_file:
                         for chunk in response.iter_content(1024):
                             img_file.write(chunk)
 
-                    img_file.close()  # 🔹 Fecha o arquivo antes de usá-lo
-                    imagens_temp.append(temp_img_path)  # 🔹 Adiciona à lista de arquivos temporários
-
+                    imagens_temp.append(temp_img_path)
                     img = Image(temp_img_path, width=400, height=200)
                     elements.append(img)
                     elements.append(Spacer(1, 20))
 
-                else:
-                    print(f"⚠ Erro ao baixar imagem: {response.status_code} - {img_url}")
-
             except Exception as e:
                 print(f"Erro ao carregar imagem: {e}")
 
-    # 🔹 Salva o PDF na memória e retorna como resposta HTTP
     doc.build(elements)
 
-    # 🔹 Apagar todas as imagens temporárias após a geração do PDF
+    # 🔹 Apagar Imagens Temporárias
     for img_path in imagens_temp:
         try:
             os.remove(img_path)
         except Exception as e:
             print(f"⚠ Erro ao deletar imagem temporária: {img_path} - {e}")
 
-    # 🔹 Retorna o PDF para download
-    buffer.seek(0)
-    response = HttpResponse(buffer, content_type="application/pdf")
-    response["Content-Disposition"] = f'attachment; filename="{nome_arquivo_pdf}"'
-    return response
+    # **🚀 Retorno Corrigido**
+    if request is not None:  
+        # 🔹 Se chamado via navegador, retorna PDF como download
+        with open(caminho_pdf, "rb") as pdf_file:
+            response = HttpResponse(pdf_file.read(), content_type="application/pdf")
+            response["Content-Disposition"] = f'attachment; filename="{nome_arquivo_pdf}"'
+            return response
+    else:  
+        # 🔹 Se chamado pelo script, retorna o caminho correto do arquivo
+        return caminho_pdf
 
 # 📌 CONFIGURAÇÃO DA AUTOMAÇÃO
 @login_required

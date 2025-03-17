@@ -1,0 +1,18 @@
+services:
+  - name: gseg-backend
+    type: web
+    env: python
+    buildCommand: 
+      - pip install -r requirements.txt
+      - python manage.py migrate
+      - python manage.py collectstatic --noinput
+    startCommand: gunicorn gestao_ocorrencias.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: gestao_ocorrencias.settings
+      - key: SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: CLOUDINARY_URL
+        sync: false

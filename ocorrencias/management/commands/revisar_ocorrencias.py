@@ -43,7 +43,7 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(f"{ocorrencias.count()} ocorrências revisadas com sucesso!"))
 
     def revisar_texto(self, texto):
-        """🔹 Função para revisar e corrigir um texto usando OpenAI, sem o prefixo 'Texto revisado:'."""
+        """🔹 Função para revisar e corrigir um texto usando OpenAI."""
         if not texto:
             return texto  # Evita erro se o campo estiver vazio
 
