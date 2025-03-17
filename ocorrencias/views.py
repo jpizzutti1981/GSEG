@@ -214,19 +214,22 @@ def cadastrar_ocorrencia(request):
         form = OcorrenciaForm()
 
     return render(request, 'ocorrencias/cadastrar_ocorrencia.html', {'form': form})
+
+# 📌 EDITAR OCORRÊNCIA
 @login_required
 def editar_ocorrencia(request, pk):
     ocorrencia = get_object_or_404(Ocorrencia, pk=pk)
-
+    
     if request.method == "POST":
         form = OcorrenciaForm(request.POST, request.FILES, instance=ocorrencia)
         if form.is_valid():
+            if "horario" not in form.cleaned_data or not form.cleaned_data["horario"]:
+                form.cleaned_data["horario"] = ocorrencia.horario  # 🔹 Mantém o horário antigo
             form.save()
-            messages.success(request, "✅ Ocorrência atualizada com sucesso!")
-            return redirect("listar_ocorrencias")  # 🔹 Redireciona para a lista de ocorrências
+            messages.success(request, "Ocorrência atualizada com sucesso!")
+            return redirect('listar_ocorrencias')
         else:
-            messages.error(request, "❌ Erro ao salvar a ocorrência. Verifique os dados.")
-
+            messages.error(request, "Erro ao salvar a ocorrência. Verifique os dados.")
     else:
         form = OcorrenciaForm(instance=ocorrencia)
 

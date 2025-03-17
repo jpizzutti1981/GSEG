@@ -21,10 +21,10 @@
             <label for="{{ form.data_ocorrencia.id_for_label }}" class="form-label">📅 Data da Ocorrência:</label>
             {{ form.data_ocorrencia }}
         </div>
-
+        
         <div class="mb-3">
             <label for="{{ form.horario.id_for_label }}" class="form-label">⏰ Horário:</label>
-            {{ form.horario }}
+            <input type="time" name="horario" value="{{ form.horario.value|default:'' }}" class="form-control">
         </div>
 
         <div class="mb-3">
