@@ -216,15 +216,20 @@ def cadastrar_ocorrencia(request):
 @login_required
 def editar_ocorrencia(request, pk):
     ocorrencia = get_object_or_404(Ocorrencia, pk=pk)
+
     if request.method == "POST":
         form = OcorrenciaForm(request.POST, request.FILES, instance=ocorrencia)
         if form.is_valid():
             form.save()
-            return redirect('listar_ocorrencias')
+            messages.success(request, "Ocorrência editada com sucesso!")  # ✅ Mensagem de sucesso
+            return redirect("listar_ocorrencias")  # ✅ Redireciona para a listagem
+        else:
+            messages.error(request, "Erro ao salvar a ocorrência. Verifique os dados.")
+
     else:
         form = OcorrenciaForm(instance=ocorrencia)
-    return render(request, 'ocorrencias/editar_ocorrencia.html', {'form': form, 'ocorrencia': ocorrencia})
 
+    return render(request, "ocorrencias/editar_ocorrencia.html", {"form": form, "ocorrencia": ocorrencia})
 
 # -----------------------------------------------------------------------------
 @login_required

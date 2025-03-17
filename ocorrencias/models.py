@@ -28,7 +28,7 @@ class Ocorrencia(models.Model):
     local = models.ForeignKey(Local, on_delete=models.CASCADE)
     nome_local = models.CharField(max_length=100)
     relato = models.TextField()
-    imagem = CloudinaryField('notificacoes', null=True, blank=True) 
+    imagem = CloudinaryField('ocorrencias', null=True, blank=True) 
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='pendente')
     responsavel = models.CharField(max_length=100)
     envolvidos = models.TextField(blank=True, null=True)

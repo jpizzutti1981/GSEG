@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ["gseg.onrender.com", "127.0.0.1"]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+DEBUG = False
 
 # Application definition
 
