@@ -5,14 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Pontal Shopping</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!-- 🔹 Verifica se os arquivos estáticos estão carregando corretamente -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
   <!-- Cabeçalho fixo -->
   <header class="header">
     <div class="logo-container">
-      <img src="{% static 'img/logoad2.png' %}" alt="Logo" class="logo-esquerda">
+      <img src="{% static 'img/logoad2.png' %}" alt="Logo" class="logo-esquerda" onerror="this.onerror=null;this.src='/static/img/logo.png';">
       <span class="titulo-sistema">Pontal Shopping - Sistema de Gestão de Segurança</span>
     </div>
   </header>
@@ -38,7 +40,7 @@
     
     <!-- Logo central (acima do título "Acesso ao Sistema") -->
     <div class="logo-acima">
-      <img src="{% static 'img/logo6.png' %}" alt="Logo" class="logo-central">
+      <img src="{% static 'img/logo6.png' %}" alt="Logo" class="logo-central" onerror="this.onerror=null;this.src='/static/img/logo.png';">
     </div>
 
     <!-- Caixa de login -->

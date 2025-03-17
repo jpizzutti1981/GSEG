@@ -159,15 +159,18 @@ LOGIN_REDIRECT_URL = 'listar_ocorrencias'  # Redireciona para a listagem de ocor
 LOGOUT_REDIRECT_URL = 'login'  # Redireciona para a página de login após logout
 
 import os
+from pathlib import Path
 
-# Definir o caminho correto para os arquivos estáticos
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Configuração correta para arquivos estáticos no Render
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Define um diretório para os arquivos estáticos
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-# Configuração de arquivos de mídia (se necessário)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+# Configuração para arquivos de mídia (imagens)
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Configuração para servir arquivos estáticos no Render
 if 'RENDER' in os.environ:
