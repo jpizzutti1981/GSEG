@@ -334,12 +334,12 @@ def gerar_sinopse_pdf(request=None, data_inicio=None, data_fim=None):
     elements = []
     styles = getSampleStyleSheet()
 
-    # 🔹 Definir Caminho do Arquivo Temporário
+    # 🔹 Verificar diretório temporário para salvar PDF
     temp_dir = "/tmp" if os.name != "nt" else os.environ.get("TEMP", "C:\\Temp")
     if not os.path.exists(temp_dir):
         os.makedirs(temp_dir)
 
-    # 🔹 Definir Datas
+    # 🔹 Definir datas (assume dia anterior se não for fornecido)
     if not data_inicio or not data_fim:
         ontem = datetime.today() - timedelta(days=1)
         data_inicio = data_fim = ontem.strftime("%Y-%m-%d")
@@ -349,12 +349,18 @@ def gerar_sinopse_pdf(request=None, data_inicio=None, data_fim=None):
     nome_arquivo_pdf = f"Sinopse_Diária_{data_nome_arquivo}.pdf"
     caminho_pdf = os.path.join(temp_dir, nome_arquivo_pdf)
 
-    # 🔹 Criar Documento PDF
+    # 🔹 Criar documento PDF
     doc = SimpleDocTemplate(caminho_pdf, pagesize=letter)
 
-    # 🔹 Cabeçalho
+    # 🔹 Definir caminhos dos logos
+    logo_esquerdo = os.path.join(settings.STATIC_ROOT, "images", "logo.png")
+    logo_direito = os.path.join(settings.STATIC_ROOT, "images", "logoad3.png")
+
+    # 🔹 Adicionar cabeçalho com os logos
     header_data = [
-        ["", Paragraph(f"<b>SINOPSE DIÁRIA - {data_formatada}</b>", styles["Title"]), ""]
+        [Image(logo_esquerdo, width=120, height=50),
+         Paragraph(f"<b>SINOPSE DIÁRIA - {data_formatada}</b>", styles["Title"]),
+         Image(logo_direito, width=80, height=50)]
     ]
     header_table = Table(header_data, colWidths=[150, 250, 150])
     header_table.setStyle(TableStyle([
@@ -420,15 +426,13 @@ def gerar_sinopse_pdf(request=None, data_inicio=None, data_fim=None):
         except Exception as e:
             print(f"⚠ Erro ao deletar imagem temporária: {img_path} - {e}")
 
-    # **🚀 Retorno Corrigido**
+    # 🔹 Retornar o PDF gerado
     if request is not None:  
-        # 🔹 Se chamado via navegador, retorna PDF como download
         with open(caminho_pdf, "rb") as pdf_file:
             response = HttpResponse(pdf_file.read(), content_type="application/pdf")
             response["Content-Disposition"] = f'attachment; filename="{nome_arquivo_pdf}"'
             return response
     else:  
-        # 🔹 Se chamado pelo script, retorna o caminho correto do arquivo
         return caminho_pdf
 
 # 📌 CONFIGURAÇÃO DA AUTOMAÇÃO
