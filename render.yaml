@@ -16,3 +16,8 @@ services:
         sync: false
       - key: CLOUDINARY_URL
         sync: false
+
+jobs:
+  - name: Revisar Ocorrências
+    schedule: "0 1 * * *"  # Executa todos os dias às 01:00 AM UTC
+    command: python manage.py revisar_ocorrencias
