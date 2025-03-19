@@ -1,12 +1,15 @@
 import os
 import time
+import django
 from datetime import datetime
 from django.core.cache import cache
 from django.core.management import call_command
-import django
 
-# Configurar Django para rodar no Worker
+# 📌 🔹 Definir o caminho correto do projeto Django antes de configurar o Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gestao_ocorrencias.settings")
+os.environ["PYTHONPATH"] = "/opt/render/project/src"
+
+# 📌 🔹 Iniciar Django corretamente
 django.setup()
 
 def esperar_ate_horario():
