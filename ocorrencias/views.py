@@ -105,6 +105,7 @@ import os
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from ocorrencias.models import ConfiguracaoAutomacao
+from django.core.cache import cache
 
 # -----------------------------------------------------------------------------
 # 📌 LOGIN (Exibe mensagens de erro corretamente)
