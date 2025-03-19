@@ -6,16 +6,19 @@ from datetime import datetime
 from django.core.management import call_command
 from django.core.cache import cache
 
-# 📌 🔹 Configurar corretamente o caminho do projeto
+# 📌 **🔹 GARANTIR O CAMINHO CORRETO DO PROJETO DJANGO**
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(PROJECT_DIR)  # 🔹 Adiciona o diretório do projeto ao `sys.path`
 
-# 📌 🔹 Configuração do Django
+# 📌 **🔹 CONFIGURAR O DJANGO CORRETAMENTE**
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gestao_ocorrencias.settings")
 
-# 📌 🔹 Inicializar o Django corretamente
-django.setup()
+try:
+    django.setup()
+except Exception as e:
+    print(f"❌ Erro ao inicializar Django: {e}")
+    sys.exit(1)
 
 def esperar_ate_horario():
     """🕒 Aguarda até o horário correto antes de enviar a sinopse."""
