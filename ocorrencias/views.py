@@ -100,6 +100,12 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
 from ocorrencias.models import Ocorrencia
 
+import requests
+import os
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from ocorrencias.models import ConfiguracaoAutomacao
+
 # -----------------------------------------------------------------------------
 # 📌 LOGIN (Exibe mensagens de erro corretamente)
 def login_view(request):
@@ -436,55 +442,51 @@ def gerar_sinopse_pdf(request=None, data_inicio=None, data_fim=None):
         return caminho_pdf
 
 # 📌 CONFIGURAÇÃO DA AUTOMAÇÃO
+
+
+# 🔹 Pegue a chave da API do Render nas Variáveis de Ambiente
+RENDER_API_KEY = os.getenv("RENDER_API_KEY")
+RENDER_SERVICE_ID = os.getenv("RENDER_SERVICE_ID")  # ID do serviço da Sinopse
+
+
 @login_required
 def configuracao_automacao(request):
     configuracao, _ = ConfiguracaoAutomacao.objects.get_or_create(id=1)
 
-    # 🔹 Garante que `horario_envio` nunca seja `None`
-    if not configuracao.horario_envio:
-        configuracao.horario_envio = "12:00"  # Define um valor padrão
-        configuracao.save()
-
     if request.method == "POST":
         try:
-            # 🔹 Captura os valores enviados pelo formulário
             emails_destinatarios = request.POST.get("emails_destinatarios", "").strip()
             assunto = request.POST.get("assunto", "").strip()
             mensagem = request.POST.get("mensagem", "").strip()
-            horario_envio = request.POST.get("horario_envio", "12:00").strip()
+            horario_envio = request.POST.get("horario_envio", "08:30").strip()
 
-            # 🔹 Valida os dados
             if not emails_destinatarios:
                 messages.error(request, "Erro: Você precisa informar pelo menos um e-mail válido.")
                 return redirect("automacao")
 
-            # 🔹 Atualiza a configuração no banco de dados
+            # 🔹 Atualiza o banco de dados com a nova configuração
             configuracao.emails_destinatarios = emails_destinatarios
             configuracao.assunto = assunto
             configuracao.mensagem = mensagem
             configuracao.horario_envio = horario_envio
             configuracao.save()
 
-            # 🔹 Define o caminho do script no Render
-            caminho_script = "/home/render/project/src/scripts/enviar_sinopse.sh"
+            # **🔹 Atualizar o Cron Job no Render via API**
+            if RENDER_API_KEY and RENDER_SERVICE_ID:
+                url = f"https://api.render.com/v1/services/{RENDER_SERVICE_ID}/jobs"
+                headers = {"Authorization": f"Bearer {RENDER_API_KEY}"}
+                payload = {
+                    "command": "python manage.py enviar_sinopse",
+                    "schedule": f"{horario_envio.split(':')[1]} {horario_envio.split(':')[0]} * * *"  # Converte para cron
+                }
 
-            # 🔹 Define o cron job no horário atualizado
-            hora, minuto = map(int, horario_envio.split(":"))
-            cron_job = f"{minuto} {hora} * * * {caminho_script} >> /home/render/project/src/logs/sinopse.log 2>&1\n"
+                response = requests.post(url, json=payload, headers=headers)
 
-            # 🔹 Atualiza o crontab no sistema Linux
-            remover_cron = f'(crontab -l | grep -v "{caminho_script}") | crontab -'
-            subprocess.run(remover_cron, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                if response.status_code == 201:
+                    messages.success(request, "Configuração salva e agendamento atualizado com sucesso!")
+                else:
+                    messages.error(request, f"Erro ao atualizar cron job: {response.text}")
 
-            adicionar_cron = f'(crontab -l; echo "{cron_job}") | crontab -'
-            resultado = subprocess.run(adicionar_cron, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
-            # 🔹 Verifica se houve erro ao atualizar o cron
-            if resultado.returncode != 0:
-                messages.error(request, f"Erro ao agendar a tarefa: {resultado.stderr}")
-                return redirect("automacao")
-
-            messages.success(request, "Configuração salva e agendamento atualizado com sucesso!")
             return redirect("automacao")
 
         except Exception as e:
