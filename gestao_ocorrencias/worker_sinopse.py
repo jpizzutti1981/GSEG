@@ -29,6 +29,8 @@ def esperar_ate_horario():
         horario_envio = cache.get("HORARIO_ENVIO", "23:30")
         agora = datetime.now().strftime("%H:%M")
 
+        print(f"🔍 [DEBUG] Agora: {agora} | Horário programado: {horario_envio}")
+
         if agora == horario_envio:
             print(f"🕒 {agora} - Enviando sinopse...")
             try:
@@ -40,6 +42,7 @@ def esperar_ate_horario():
             time.sleep(86400)  # Aguarda 24h até a próxima execução
 
         else:
+            print("⏳ Ainda não é a hora, aguardando 30 segundos...")
             time.sleep(30)  # Verifica a cada 30 segundos se chegou a hora
 
 if __name__ == "__main__":
