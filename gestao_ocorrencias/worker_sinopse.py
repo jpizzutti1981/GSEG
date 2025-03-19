@@ -3,17 +3,18 @@ import sys
 import time
 import django
 from datetime import datetime
-from django.core.cache import cache
 from django.core.management import call_command
+from django.core.cache import cache
 
-# 📌 🔹 Define o diretório raiz do projeto
+# 📌 🔹 Configurar corretamente o caminho do projeto
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(BASE_DIR)  # Adiciona o diretório ao sys.path
+PROJECT_DIR = os.path.dirname(BASE_DIR)
+sys.path.append(PROJECT_DIR)  # 🔹 Adiciona o diretório do projeto ao `sys.path`
 
 # 📌 🔹 Configuração do Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gestao_ocorrencias.settings")
 
-# 📌 🔹 Inicializa o Django
+# 📌 🔹 Inicializar o Django corretamente
 django.setup()
 
 def esperar_ate_horario():
