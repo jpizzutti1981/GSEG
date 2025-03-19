@@ -25,7 +25,7 @@ def obter_horario_envio():
     """🔹 Busca o horário atualizado do banco de dados"""
     config = ConfiguracaoAutomacao.objects.first()
     if config and config.horario_envio:
-        return config.horario_envio.strip()
+        return config.horario_envio.strftime("%H:%M")  # 🔹 Converte `time` para string formatada
     return "23:30"  # 🔹 Se não houver configuração, usa um padrão
 
 def esperar_ate_horario():
