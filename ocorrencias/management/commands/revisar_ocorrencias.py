@@ -1,49 +1,67 @@
 import os
-import sys
-import time
-import django
-from datetime import datetime
-from django.core.management import call_command
-from django.core.cache import cache
+import openai
+from django.core.management.base import BaseCommand
+from datetime import datetime, timedelta
+from ocorrencias.models import Ocorrencia
+from dotenv import load_dotenv
 
-# 📌 **🔹 GARANTIR O CAMINHO CORRETO DO PROJETO DJANGO**
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_DIR = os.path.dirname(BASE_DIR)
-sys.path.append(PROJECT_DIR)  # 🔹 Adiciona o diretório do projeto ao `sys.path`
+# 🔹 Carregar variáveis do .env
+load_dotenv()
 
-# 📌 **🔹 CONFIGURAR O DJANGO CORRETAMENTE**
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gestao_ocorrencias.settings")
+# 🔹 Obter a API Key
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-try:
-    django.setup()
-except Exception as e:
-    print(f"❌ Erro ao inicializar Django: {e}")
-    sys.exit(1)
+if not OPENAI_API_KEY:
+    raise ValueError("⚠️ ERRO: OPENAI_API_KEY não foi definida. Verifique o arquivo .env.")
 
-def esperar_ate_horario():
-    """🕒 Aguarda até o horário correto antes de revisar ocorrências."""
-    print("🚀 Worker de Revisão de Ocorrências iniciado! Aguardando horário correto...")
+# 🔹 Inicializar o cliente OpenAI corretamente
+client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
-    while True:
-        # 📌 Obtém o horário de revisão do cache ou usa um padrão
-        horario_revisao = cache.get("HORARIO_REVISAO", "01:00")
-        agora = datetime.now().strftime("%H:%M")
+class Command(BaseCommand):  # 🔹 Corrigir nome da classe para "Command"
+    help = "Revisa os relatos e ações tomadas das ocorrências do dia anterior usando IA"
 
-        print(f"🔍 [DEBUG] Agora: {agora} | Horário programado: {horario_revisao}")
+    def handle(self, *args, **kwargs):
+        self.stdout.write("🚀 Iniciando revisão de ocorrências...")
 
-        if agora == horario_revisao:
-            print(f"🕒 {agora} - Iniciando revisão de ocorrências...")
-            try:
-                call_command("revisar_ocorrencias")
-                print("✅ Revisão de ocorrências concluída com sucesso!")
-            except Exception as e:
-                print(f"❌ Erro ao revisar ocorrências: {e}")
+        ontem = datetime.now() - timedelta(days=1)
+        data_ontem = ontem.strftime("%Y-%m-%d")
 
-            time.sleep(86400)  # Aguarda 24h até a próxima execução
+        # 🔹 Filtrar ocorrências do dia anterior
+        ocorrencias = Ocorrencia.objects.filter(data_ocorrencia=data_ontem)
 
-        else:
-            print("⏳ Ainda não é a hora, aguardando 30 segundos...")
-            time.sleep(30)  # Verifica a cada 30 segundos se chegou a hora
+        if not ocorrencias.exists():
+            self.stdout.write(self.style.WARNING("⚠ Nenhuma ocorrência para revisar."))
+            return
 
-if __name__ == "__main__":
-    esperar_ate_horario()
+        for ocorrencia in ocorrencias:
+            relato_corrigido = self.revisar_texto(ocorrencia.relato)
+            acoes_corrigidas = self.revisar_texto(ocorrencia.acoes_tomadas)
+
+            # 🔹 Atualizar ocorrências
+            ocorrencia.relato = relato_corrigido
+            ocorrencia.acoes_tomadas = acoes_corrigidas
+            ocorrencia.save()
+
+        self.stdout.write(self.style.SUCCESS(f"✅ {ocorrencias.count()} ocorrências revisadas com sucesso!"))
+
+    def revisar_texto(self, texto):
+        """🔹 Função para revisar e corrigir um texto usando OpenAI."""
+        if not texto:
+            return texto  # Evita erro se o campo estiver vazio
+
+        prompt = (
+            "Revise o seguinte texto e corrija erros gramaticais, ortográficos e melhore a clareza. "
+            "Mantenha o sentido original e a formalidade do texto. Responda apenas com o texto revisado, "
+            "sem introduções ou explicações adicionais.\n\n"
+            f"Texto original:\n{texto}"
+        )
+
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[{"role": "user", "content": prompt}]
+            )
+            return response.choices[0].message.content.strip()
+
+        except Exception as e:
+            return f"❌ Erro na revisão: {str(e)}"
