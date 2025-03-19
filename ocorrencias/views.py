@@ -442,15 +442,18 @@ def gerar_sinopse_pdf(request=None, data_inicio=None, data_fim=None):
         return caminho_pdf
 
 # 📌 CONFIGURAÇÃO DA AUTOMAÇÃO
-
-
-# 📌 Pegue a chave da API do Render nas Variáveis de Ambiente
+# 🔹 Pega a chave da API do Render nas Variáveis de Ambiente
 RENDER_API_KEY = os.getenv("RENDER_API_KEY")
-RENDER_SERVICE_ID = os.getenv("RENDER_SERVICE_ID")  # ID do serviço da Sinopse
+RENDER_SERVICE_ID = os.getenv("RENDER_SERVICE_ID")  # ID do worker do Render
 
 @login_required
 def configuracao_automacao(request):
     configuracao, _ = ConfiguracaoAutomacao.objects.get_or_create(id=1)
+
+    # 🔹 Garante que `horario_envio` nunca seja `None`
+    if not configuracao.horario_envio:
+        configuracao.horario_envio = "12:00"  # Define um valor padrão
+        configuracao.save()
 
     if request.method == "POST":
         try:
@@ -472,20 +475,23 @@ def configuracao_automacao(request):
             configuracao.horario_envio = horario_envio
             configuracao.save()
 
-            # 🔹 Executa comando no Render para reiniciar o worker no novo horário
+            # 🔹 Reiniciar o Worker no Render (para aplicar novo horário imediatamente)
             if RENDER_API_KEY and RENDER_SERVICE_ID:
-                comando_restart = f"""
-                curl -X POST "https://api.render.com/v1/services/{RENDER_SERVICE_ID}/restart" \
-                -H "Accept: application/json" \
-                -H "Authorization: Bearer {RENDER_API_KEY}"
-                """
-                resultado = subprocess.run(comando_restart, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                url_restart_worker = f"https://api.render.com/v1/services/{RENDER_SERVICE_ID}/restart"
+                headers = {
+                    "Accept": "application/json",
+                    "Authorization": f"Bearer {RENDER_API_KEY}"
+                }
+                response = requests.post(url_restart_worker, headers=headers)
 
-                if resultado.returncode != 0:
-                    messages.error(request, f"Erro ao atualizar o agendamento: {resultado.stderr}")
-                    return redirect("automacao")
+                if response.status_code == 200:
+                    messages.success(request, "Configuração salva e worker reiniciado com sucesso! 🚀")
+                else:
+                    messages.error(request, f"Erro ao reiniciar worker: {response.text}")
 
-            messages.success(request, "Configuração salva e agendamento atualizado com sucesso!")
+            else:
+                messages.error(request, "Erro: Variáveis de ambiente do Render não estão configuradas.")
+
             return redirect("automacao")
 
         except Exception as e:
