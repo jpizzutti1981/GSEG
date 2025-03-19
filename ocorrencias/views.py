@@ -475,22 +475,10 @@ def configuracao_automacao(request):
             configuracao.horario_envio = horario_envio
             configuracao.save()
 
-            # 🔹 Reiniciar o Worker no Render (para aplicar novo horário imediatamente)
-            if RENDER_API_KEY and RENDER_SERVICE_ID:
-                url_restart_worker = f"https://api.render.com/v1/services/{RENDER_SERVICE_ID}/restart"
-                headers = {
-                    "Accept": "application/json",
-                    "Authorization": f"Bearer {RENDER_API_KEY}"
-                }
-                response = requests.post(url_restart_worker, headers=headers)
+            # 🔹 Atualiza o horário na **memória cache** (para ser reconhecido pelo worker em tempo real)
+            cache.set("HORARIO_ENVIO", horario_envio, timeout=None)
 
-                if response.status_code == 200:
-                    messages.success(request, "Configuração salva e worker reiniciado com sucesso! 🚀")
-                else:
-                    messages.error(request, f"Erro ao reiniciar worker: {response.text}")
-
-            else:
-                messages.error(request, "Erro: Variáveis de ambiente do Render não estão configuradas.")
+            messages.success(request, "Configuração salva com sucesso! 🚀 O novo horário será respeitado.")
 
             return redirect("automacao")
 
