@@ -1,5 +1,6 @@
 import os
 import openai
+import time
 from django.core.management.base import BaseCommand
 from datetime import datetime, timedelta
 from ocorrencias.models import Ocorrencia
@@ -21,26 +22,45 @@ class Command(BaseCommand):
     help = "Revisa os relatos e ações tomadas das ocorrências do dia anterior usando IA"
 
     def handle(self, *args, **kwargs):
-        ontem = datetime.now() - timedelta(days=1)
-        data_ontem = ontem.strftime("%Y-%m-%d")
+        print("🚀 Worker de Revisão de Ocorrências iniciado! Aguardando horário correto...")
 
-        # 🔹 Filtrar ocorrências do dia anterior
-        ocorrencias = Ocorrencia.objects.filter(data_ocorrencia=data_ontem)
+        while True:
+            horario_atual = datetime.now().strftime("%H:%M")
+            horario_programado = "01:00"  # 🔹 Garante que será executado às 01h todos os dias
 
-        if not ocorrencias.exists():
-            self.stdout.write(self.style.WARNING("Nenhuma ocorrência para revisar."))
-            return
+            print(f"🔍 [DEBUG] Agora: {horario_atual} | Horário programado: {horario_programado}")
 
-        for ocorrencia in ocorrencias:
-            relato_corrigido = self.revisar_texto(ocorrencia.relato)
-            acoes_corrigidas = self.revisar_texto(ocorrencia.acoes_tomadas)
+            if horario_atual == horario_programado:
+                print("🕒 01:00 - Iniciando revisão de ocorrências...")
 
-            # 🔹 Atualizar ocorrências
-            ocorrencia.relato = relato_corrigido
-            ocorrencia.acoes_tomadas = acoes_corrigidas
-            ocorrencia.save()
+                ontem = datetime.now() - timedelta(days=1)
+                data_ontem = ontem.strftime("%Y-%m-%d")
 
-        self.stdout.write(self.style.SUCCESS(f"{ocorrencias.count()} ocorrências revisadas com sucesso!"))
+                # 🔹 Filtrar ocorrências do dia anterior
+                ocorrencias = Ocorrencia.objects.filter(data_ocorrencia=data_ontem)
+
+                if not ocorrencias.exists():
+                    print("⚠️ Nenhuma ocorrência para revisar.")
+                else:
+                    for ocorrencia in ocorrencias:
+                        print(f"✍️ Revisando ocorrência ID {ocorrencia.id}...")
+
+                        relato_corrigido = self.revisar_texto(ocorrencia.relato)
+                        acoes_corrigidas = self.revisar_texto(ocorrencia.acoes_tomadas)
+
+                        # 🔹 Atualizar ocorrências
+                        ocorrencia.relato = relato_corrigido
+                        ocorrencia.acoes_tomadas = acoes_corrigidas
+                        ocorrencia.save()
+
+                    print(f"✅ {ocorrencias.count()} ocorrências revisadas com sucesso!")
+
+                print("⏳ Aguardando 24h para a próxima execução...")
+                time.sleep(86400)  # 🔹 Aguarda 24h para a próxima execução
+
+            else:
+                print("⏳ Ainda não é a hora, aguardando 30 segundos...")
+                time.sleep(30)  # 🔹 Verifica a cada 30 segundos
 
     def revisar_texto(self, texto):
         """🔹 Função para revisar e corrigir um texto usando OpenAI."""
