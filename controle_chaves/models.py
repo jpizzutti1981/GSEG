@@ -57,6 +57,8 @@ class MovimentacaoChave(models.Model):
     def __str__(self):
         return f"Chave {self.chave.numero} - {self.status}"
 
+from cloudinary.models import CloudinaryField
+
 class ReciclagemVigilante(models.Model):
     STATUS_CHOICES = [
         ("No Prazo", "No Prazo"),
@@ -69,7 +71,7 @@ class ReciclagemVigilante(models.Model):
     vencimento = models.DateField(verbose_name="Data de Vencimento", blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, verbose_name="Status", blank=True)
     dias_para_vencimento = models.IntegerField(verbose_name="Dias para Vencimento", blank=True, null=True)
-    diploma = models.FileField(upload_to="diplomas/", verbose_name="Diploma de Reciclagem", blank=True, null=True)
+    diploma = CloudinaryField("diplomas", blank=True, null=True, help_text="Diploma de Reciclagem")
 
     def calcular_vencimento(self):
         """Define o vencimento com base na data da última reciclagem (+ 720 dias)."""
