@@ -465,36 +465,21 @@ def configuracao_automacao(request):
             configuracao.horario_envio = horario_envio
             configuracao.save()
 
-            # 🔹 Define os caminhos dos arquivos
-            caminho_bat = "C:\\Users\\Jorge\\gestao_ocorrencias\\executar_sinopse.bat"
-            caminho_vbs = "C:\\Users\\Jorge\\gestao_ocorrencias\\executar_sinopse.vbs"
+            # 🔹 Define o caminho do script no Render
+            caminho_script = "/home/render/project/src/scripts/enviar_sinopse.sh"
 
-            # 🔹 Atualiza o arquivo `.bat`
-            with open(caminho_bat, "w") as bat_file:
-                bat_file.write(f'@echo off\n')
-                bat_file.write(f'cd C:\\Users\\Jorge\\gestao_ocorrencias\n')
-                bat_file.write(f'call venv\\Scripts\\activate\n')  # `call` evita fechamento imediato
-                bat_file.write(f'python manage.py enviar_sinopse\n')
-
-            # 🔹 Atualiza o arquivo `.vbs` para executar o `.bat` sem exibir a janela
-            with open(caminho_vbs, "w") as vbs_file:
-                vbs_file.write(f'Set WshShell = CreateObject("WScript.Shell")\n')
-                vbs_file.write(f'WshShell.Run chr(34) & "{caminho_bat}" & chr(34), 0\n')
-                vbs_file.write(f'Set WshShell = Nothing\n')
-
-            # 🔹 Configura o Agendador de Tarefas do Windows para executar o `.vbs` (e não o `.bat`)
-            nome_tarefa = "EnviarSinopseDiaria"
+            # 🔹 Define o cron job no horário atualizado
             hora, minuto = map(int, horario_envio.split(":"))
+            cron_job = f"{minuto} {hora} * * * {caminho_script} >> /home/render/project/src/logs/sinopse.log 2>&1\n"
 
-            # 🔹 Remove a tarefa antiga caso já exista
-            remover_tarefa = f'schtasks /delete /tn "{nome_tarefa}" /f'
-            subprocess.run(remover_tarefa, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            # 🔹 Atualiza o crontab no sistema Linux
+            remover_cron = f'(crontab -l | grep -v "{caminho_script}") | crontab -'
+            subprocess.run(remover_cron, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-            # 🔹 Cria a nova tarefa com o horário atualizado
-            comando_schtasks = f'schtasks /create /tn "{nome_tarefa}" /tr "{caminho_vbs}" /sc daily /st {hora:02d}:{minuto:02d} /RL HIGHEST /F'
-            resultado = subprocess.run(comando_schtasks, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            adicionar_cron = f'(crontab -l; echo "{cron_job}") | crontab -'
+            resultado = subprocess.run(adicionar_cron, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-            # 🔹 Verifica se houve erro no `schtasks`
+            # 🔹 Verifica se houve erro ao atualizar o cron
             if resultado.returncode != 0:
                 messages.error(request, f"Erro ao agendar a tarefa: {resultado.stderr}")
                 return redirect("automacao")

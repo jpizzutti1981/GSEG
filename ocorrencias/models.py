@@ -32,7 +32,7 @@ class Ocorrencia(models.Model):
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='pendente')
     responsavel = models.CharField(max_length=100)
     envolvidos = models.TextField(blank=True, null=True)
-    acoes_tomadas = models.TextField(blank=True, null=True)
+    acoes_tomadas = models.TextField(blank=True, null=True, verbose_name="Ações Tomadas")
     supervisor = models.CharField(max_length=100, blank=True, null=True)
 
     def save(self, *args, **kwargs):
