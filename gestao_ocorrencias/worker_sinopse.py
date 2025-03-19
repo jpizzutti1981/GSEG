@@ -4,7 +4,6 @@ import time
 import django
 from datetime import datetime
 from django.core.management import call_command
-from django.core.cache import cache
 
 # 📌 **🔹 GARANTIR O CAMINHO CORRETO DO PROJETO DJANGO**
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -20,13 +19,21 @@ except Exception as e:
     print(f"❌ Erro ao inicializar Django: {e}")
     sys.exit(1)
 
+from ocorrencias.models import ConfiguracaoAutomacao  # 🔹 Importação do modelo
+
+def obter_horario_envio():
+    """🔹 Busca o horário atualizado do banco de dados"""
+    config = ConfiguracaoAutomacao.objects.first()
+    if config and config.horario_envio:
+        return config.horario_envio.strip()
+    return "23:30"  # 🔹 Se não houver configuração, usa um padrão
+
 def esperar_ate_horario():
     """🕒 Aguarda até o horário correto antes de enviar a sinopse."""
     print("🚀 Worker iniciado! Aguardando horário correto...")
 
     while True:
-        # 📌 Obtém o horário de envio atualizado do cache ou usa um padrão
-        horario_envio = cache.get("HORARIO_ENVIO", "23:30")
+        horario_envio = obter_horario_envio()  # 🔹 Agora busca direto do banco de dados
         agora = datetime.now().strftime("%H:%M")
 
         print(f"🔍 [DEBUG] Agora: {agora} | Horário programado: {horario_envio}")
@@ -39,11 +46,11 @@ def esperar_ate_horario():
             except Exception as e:
                 print(f"❌ Erro ao enviar sinopse: {e}")
 
-            time.sleep(86400)  # Aguarda 24h até a próxima execução
+            time.sleep(61)  # 🔹 Aguarda 61 segundos antes de verificar novamente
 
         else:
             print("⏳ Ainda não é a hora, aguardando 30 segundos...")
-            time.sleep(30)  # Verifica a cada 30 segundos se chegou a hora
+            time.sleep(30)  # 🔹 Verifica a cada 30 segundos
 
 if __name__ == "__main__":
     esperar_ate_horario()
