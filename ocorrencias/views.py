@@ -444,10 +444,9 @@ def gerar_sinopse_pdf(request=None, data_inicio=None, data_fim=None):
 # 📌 CONFIGURAÇÃO DA AUTOMAÇÃO
 
 
-# 🔹 Pegue a chave da API do Render nas Variáveis de Ambiente
+# 📌 Pegue a chave da API do Render nas Variáveis de Ambiente
 RENDER_API_KEY = os.getenv("RENDER_API_KEY")
 RENDER_SERVICE_ID = os.getenv("RENDER_SERVICE_ID")  # ID do serviço da Sinopse
-
 
 @login_required
 def configuracao_automacao(request):
@@ -455,38 +454,38 @@ def configuracao_automacao(request):
 
     if request.method == "POST":
         try:
+            # 🔹 Captura os valores enviados pelo formulário
             emails_destinatarios = request.POST.get("emails_destinatarios", "").strip()
             assunto = request.POST.get("assunto", "").strip()
             mensagem = request.POST.get("mensagem", "").strip()
-            horario_envio = request.POST.get("horario_envio", "08:30").strip()
+            horario_envio = request.POST.get("horario_envio", "12:00").strip()
 
+            # 🔹 Valida os dados
             if not emails_destinatarios:
                 messages.error(request, "Erro: Você precisa informar pelo menos um e-mail válido.")
                 return redirect("automacao")
 
-            # 🔹 Atualiza o banco de dados com a nova configuração
+            # 🔹 Atualiza a configuração no banco de dados
             configuracao.emails_destinatarios = emails_destinatarios
             configuracao.assunto = assunto
             configuracao.mensagem = mensagem
             configuracao.horario_envio = horario_envio
             configuracao.save()
 
-            # **🔹 Atualizar o Cron Job no Render via API**
+            # 🔹 Executa comando no Render para reiniciar o worker no novo horário
             if RENDER_API_KEY and RENDER_SERVICE_ID:
-                url = f"https://api.render.com/v1/services/{RENDER_SERVICE_ID}/jobs"
-                headers = {"Authorization": f"Bearer {RENDER_API_KEY}"}
-                payload = {
-                    "command": "python manage.py enviar_sinopse",
-                    "schedule": f"{horario_envio.split(':')[1]} {horario_envio.split(':')[0]} * * *"  # Converte para cron
-                }
+                comando_restart = f"""
+                curl -X POST "https://api.render.com/v1/services/{RENDER_SERVICE_ID}/restart" \
+                -H "Accept: application/json" \
+                -H "Authorization: Bearer {RENDER_API_KEY}"
+                """
+                resultado = subprocess.run(comando_restart, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-                response = requests.post(url, json=payload, headers=headers)
+                if resultado.returncode != 0:
+                    messages.error(request, f"Erro ao atualizar o agendamento: {resultado.stderr}")
+                    return redirect("automacao")
 
-                if response.status_code == 201:
-                    messages.success(request, "Configuração salva e agendamento atualizado com sucesso!")
-                else:
-                    messages.error(request, f"Erro ao atualizar cron job: {response.text}")
-
+            messages.success(request, "Configuração salva e agendamento atualizado com sucesso!")
             return redirect("automacao")
 
         except Exception as e:
