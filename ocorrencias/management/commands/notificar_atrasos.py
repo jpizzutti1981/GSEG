@@ -49,7 +49,7 @@ class Command(BaseCommand):
             Se já devolveu, desconsidere este e-mail.
 
             Atenciosamente,
-            Equipe de Controle de Chaves
+            Equipe Central de Segurança
             """
 
             send_mail(
