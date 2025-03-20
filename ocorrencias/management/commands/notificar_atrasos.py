@@ -1,18 +1,12 @@
 import smtplib
 from datetime import datetime, timedelta
-from django.conf import settings
 from django.core.management.base import BaseCommand
-from controle_chaves.models import MovimentacaoChave
-import smtplib
 from django.core.mail import send_mail
 from django.conf import settings
-
-import smtplib
-from django.core.mail import send_mail
-from django.conf import settings
-from django.core.management.base import BaseCommand
+from django.db.models import Q
+from django.db.models.functions import Cast
+from django.db.models import DateField
 from controle_chaves.models import MovimentacaoChave
-from datetime import datetime, timedelta
 
 class Command(BaseCommand):
     help = "Envia e-mail para responsáveis que não devolveram a chave após 24h."
@@ -22,10 +16,13 @@ class Command(BaseCommand):
         tempo_limite = agora - timedelta(days=1)  # 🔹 Chaves com mais de 24h da saída
 
         # 🔹 Buscar chaves emprestadas há mais de 24h
-        chaves_atrasadas = MovimentacaoChave.objects.filter(status="Não Devolvida", data_saida__lte=tempo_limite)
+        chaves_atrasadas = MovimentacaoChave.objects.annotate(
+            data_saida_date=Cast("data_saida", DateField())  # 🔹 Garante que `data_saida` seja `date`
+        ).filter(Q(status__iexact="Não Devolvida"), data_saida_date__lte=tempo_limite)
 
+        # 🚨 Interrompe se não houver chaves atrasadas
         if not chaves_atrasadas.exists():
-            self.stdout.write(self.style.SUCCESS("✅ Nenhuma chave atrasada."))
+            self.stdout.write(self.style.WARNING("🚨 Nenhuma chave está atrasada. Nenhuma notificação enviada."))
             return
 
         # 🔹 Enviar e-mails para responsáveis
@@ -35,7 +32,6 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS(f"📨 {chaves_atrasadas.count()} notificações enviadas."))
 
-    # ✅ 🔹 Corrigido: Função `enviar_email` agora está dentro da classe
     def enviar_email(self, responsavel, email, numero_chave, data_saida):
         try:
             assunto = "🔑 Aviso de Chave Atrasada"
@@ -64,4 +60,3 @@ class Command(BaseCommand):
 
         except Exception as e:
             self.stdout.write(self.style.ERROR(f"❌ Falha ao enviar e-mail: {e}"))
-
