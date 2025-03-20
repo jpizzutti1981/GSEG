@@ -42,6 +42,24 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from .models import Colaborador
+from django.db.models.functions import Cast
+from django.db.models import IntegerField
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from django.utils import timezone
+from django.db.models.functions import Cast
+from django.db.models import IntegerField
+from .models import MovimentacaoChave, Chave, Colaborador
+from .forms import MovimentacaoChaveForm
+
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .models import MovimentacaoChave, Chave, Colaborador
+from .forms import MovimentacaoChaveForm
+from django.db.models import IntegerField
+from django.db.models.functions import Cast
 
 # ✅ LISTAR CHAVES (MOSTRA AS CHAVES DISPONÍVEIS)
 @login_required
@@ -100,14 +118,21 @@ def listar_movimentacoes(request):
 @login_required
 def registrar_saida(request):
     """Registra a saída de uma chave e impede saídas duplicadas."""
-
-    colaboradores = Colaborador.objects.all()  # 🔹 Carregar lista de colaboradores
-    chaves_disponiveis = Chave.objects.filter(disponivel=True)
+    colaboradores = Colaborador.objects.all()
+    chaves_disponiveis = Chave.objects.filter(disponivel=True).annotate(
+        numero_int=Cast('numero', IntegerField())
+    ).order_by('numero_int')
 
     if request.method == "POST":
         form = MovimentacaoChaveForm(request.POST)
         if form.is_valid():
             movimentacao = form.save(commit=False)
+
+            # Capturar os dados do colaborador selecionado
+            colaborador = form.cleaned_data["colaborador"]
+            movimentacao.responsavel = colaborador.nome_completo
+            movimentacao.telefone = colaborador.telefone
+            movimentacao.email = colaborador.email
 
             # Verifica se a chave já está emprestada
             if not movimentacao.chave.disponivel:
@@ -125,10 +150,9 @@ def registrar_saida(request):
             return redirect("registrar_saida")
 
         else:
-            messages.error(request, "❌ Erro ao registrar saída. Verifique os dados.")
+            messages.error(request, f"❌ Erro ao registrar saída. Verifique os dados: {form.errors}")
 
     form = MovimentacaoChaveForm()
-
     return render(request, "controle_chaves/registrar_saida.html", {
         "form": form,
         "chaves_disponiveis": chaves_disponiveis,
@@ -142,8 +166,9 @@ def registrar_devolucao(request, movimentacao_id):
     movimentacao = get_object_or_404(MovimentacaoChave, id=movimentacao_id)
     
     if request.method == "POST":
-        movimentacao.data_devolucao = datetime.now().date()
-        movimentacao.horario_devolucao = datetime.now().time()
+        movimentacao.data_devolucao = timezone.now().date()
+        movimentacao.horario_devolucao = timezone.now().time()
+        movimentacao.operador_devolucao = request.user.get_full_name()  # 🔹 Define o operador como o usuário logado
         movimentacao.status = "Devolvida"
         movimentacao.save()
 
@@ -173,9 +198,8 @@ def cadastrar_chave(request):
     form = ChaveForm()
     return render(request, "controle_chaves/cadastrar_chave.html", {"form": form})
 
-@login_required
 def editar_chave(request, chave_id):
-    """Edita o cadastro de uma chave."""
+    """ Edita uma chave cadastrada """
     chave = get_object_or_404(Chave, id=chave_id)
 
     if request.method == "POST":
@@ -184,11 +208,38 @@ def editar_chave(request, chave_id):
             form.save()
             messages.success(request, "✅ Chave atualizada com sucesso!")
             return redirect("listar_chaves")
+    else:
+        form = ChaveForm(instance=chave)
+
+    return render(request, "controle_chaves/editar_chave.html", {"form": form})
+
+@login_required
+def editar_saida(request, movimentacao_id):
+    """Permite editar uma saída já registrada"""
+    movimentacao = get_object_or_404(MovimentacaoChave, id=movimentacao_id)
+
+    if request.method == "POST":
+        form = MovimentacaoChaveForm(request.POST, instance=movimentacao)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "✅ Saída da chave atualizada com sucesso!")
+            return redirect("listar_movimentacoes")
         else:
-            messages.error(request, "❌ Erro ao atualizar a chave. Verifique os dados.")
-    
-    form = ChaveForm(instance=chave)
-    return render(request, "controle_chaves/editar_chave.html", {"form": form, "chave": chave})
+            messages.error(request, "❌ Erro ao atualizar a saída. Verifique os dados.")
+
+    else:
+        form = MovimentacaoChaveForm(instance=movimentacao)
+
+    colaboradores = Colaborador.objects.all()
+    chaves_disponiveis = Chave.objects.all().annotate(
+        numero_int=Cast("numero", IntegerField())).order_by("numero_int")
+
+    return render(request, "controle_chaves/editar_saida.html", {
+        "form": form,
+        "movimentacao": movimentacao,
+        "chaves_disponiveis": chaves_disponiveis,
+        "colaboradores": colaboradores
+    })
 
 @login_required
 def deletar_chave(request, chave_id):
@@ -432,13 +483,14 @@ def deletar_usuario(request, usuario_id):
     return redirect("listar_usuarios")
 
 def buscar_dados_colaborador(request):
-    """ Busca automaticamente e-mail e telefone do colaborador ao selecionar um nome """
+    """Busca os dados do colaborador selecionado via AJAX."""
     colaborador_id = request.GET.get("colaborador_id")
-    colaborador = get_object_or_404(Colaborador, id=colaborador_id)
-    
-    data = {
-        "email": colaborador.email,
-        "telefone": colaborador.telefone
-    }
-    
-    return JsonResponse(data)
+    colaborador = Colaborador.objects.filter(id=colaborador_id).first()
+
+    if colaborador:
+        data = {
+            "telefone": colaborador.telefone,
+            "email": colaborador.email,
+        }
+        return JsonResponse(data)
+    return JsonResponse({}, status=400)

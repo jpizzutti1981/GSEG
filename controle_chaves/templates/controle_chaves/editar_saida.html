@@ -1,21 +1,83 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
-                <div class="card-header bg-warning text-white text-center">
-                    <h2>✏️ Editar Registro de Saída</h2>
+                <div class="card-header bg-warning text-dark text-center">
+                    <h2>✏️ Editar Saída da Chave</h2>
                 </div>
                 <div class="card-body">
+                    
+                    <!-- Mensagens de Sucesso e Erro -->
+                    {% if messages %}
+                        <div class="container mb-3">
+                            {% for message in messages %}
+                                <div class="alert 
+                                    {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %} 
+                                    alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
                     <form method="POST">
                         {% csrf_token %}
-                        {{ form.as_p }}
 
+                        <!-- Selecionar Chave -->
+                        <div class="mb-3">
+                            <label for="{{ form.chave.id_for_label }}" class="form-label fw-bold">🔑 Chave:</label>
+                            {{ form.chave }}
+                        </div>
+
+                        <!-- Nome do Responsável -->
+                        <div class="mb-3">
+                            <label for="{{ form.responsavel.id_for_label }}" class="form-label fw-bold">🧑‍💼 Responsável:</label>
+                            {{ form.responsavel }}
+                        </div>
+
+                        <!-- Telefone do Responsável -->
+                        <div class="mb-3">
+                            <label for="{{ form.telefone.id_for_label }}" class="form-label fw-bold">📞 Telefone:</label>
+                            {{ form.telefone }}
+                        </div>
+
+                        <!-- E-mail do Responsável -->
+                        <div class="mb-3">
+                            <label for="{{ form.email.id_for_label }}" class="form-label fw-bold">📧 E-mail do Responsável:</label>
+                            {{ form.email }}
+                        </div>
+
+                        <!-- Data de Saída -->
+                        <div class="mb-3">
+                            <label for="{{ form.data_saida.id_for_label }}" class="form-label fw-bold">📅 Data de Saída:</label>
+                            {{ form.data_saida }}
+                        </div>
+
+                        <!-- Horário de Saída -->
+                        <div class="mb-3">
+                            <label for="{{ form.horario_saida.id_for_label }}" class="form-label fw-bold">⏰ Horário de Saída:</label>
+                            {{ form.horario_saida }}
+                        </div>
+
+                        <!-- Operador Responsável -->
+                        <div class="mb-3">
+                            <label for="{{ form.operador_saida.id_for_label }}" class="form-label fw-bold">👮‍♂️ Operador Responsável:</label>
+                            {{ form.operador_saida }}
+                        </div>
+
+                        <!-- Observação -->
+                        <div class="mb-3">
+                            <label for="{{ form.observacao.id_for_label }}" class="form-label fw-bold">📝 Observação:</label>
+                            {{ form.observacao }}
+                        </div>
+
+                        <!-- Botões -->
                         <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-success">Salvar Alterações</button>
-                            <a href="{% url 'listar_movimentacoes' %}" class="btn btn-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-success">💾 Atualizar Saída</button>
+                            <a href="{% url 'listar_movimentacoes' %}" class="btn btn-secondary">❌ Cancelar</a>
                         </div>
                     </form>
                 </div>

@@ -15,6 +15,7 @@ import cloudinary.uploader
 from pdf2image import convert_from_path
 import requests
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 
 class Chave(models.Model):
@@ -32,25 +33,24 @@ class MovimentacaoChave(models.Model):
         ("Não Devolvida", "Não Devolvida"),
     ]
 
-    chave = models.ForeignKey(Chave, on_delete=models.CASCADE, verbose_name="Chave")
+    chave = models.ForeignKey("Chave", on_delete=models.CASCADE, verbose_name="Chave")
     responsavel = models.CharField(max_length=255, verbose_name="Responsável")
-    data_saida = models.DateField(auto_now_add=True, verbose_name="Data de Saída")
-    horario_saida = models.TimeField(auto_now_add=True, verbose_name="Horário de Saída")
+    telefone = models.CharField(max_length=20, verbose_name="Telefone", blank=True, null=True)  # 🔹 Adicionado
+    email = models.EmailField(verbose_name="E-mail", blank=True, null=True)  # 🔹 Adicionado
+    data_saida = models.DateField(default=timezone.now, verbose_name="Data de Saída")  # 🔹 Agora pode ser editado
+    horario_saida = models.TimeField(default=timezone.now, verbose_name="Horário de Saída")  # 🔹 Agora pode ser editado
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default="Não Devolvida", verbose_name="Status")
     operador_saida = models.CharField(max_length=255, verbose_name="Operador de Saída")
 
     data_devolucao = models.DateField(null=True, blank=True, verbose_name="Data de Devolução")
     horario_devolucao = models.TimeField(null=True, blank=True, verbose_name="Horário de Devolução")
     operador_devolucao = models.CharField(max_length=255, null=True, blank=True, verbose_name="Operador de Devolução")
-    
+
     observacao = models.TextField(blank=True, null=True, verbose_name="Observação")
 
     def __str__(self):
         return f"Chave {self.chave.numero} - {self.status}"
-
-
-from cloudinary.models import CloudinaryField
-
+    
 class ReciclagemVigilante(models.Model):
     STATUS_CHOICES = [
         ("No Prazo", "No Prazo"),

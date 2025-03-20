@@ -10,10 +10,30 @@ from .models import MovimentacaoChave, Colaborador
 class MovimentacaoChaveForm(forms.ModelForm):
     colaborador = forms.ModelChoiceField(
         queryset=Colaborador.objects.all(),
-        widget=forms.Select(attrs={"class": "form-control", "id": "colaborador"}),
+        widget=forms.Select(attrs={"class": "form-control select2", "id": "colaborador"}),
         required=True,
         label="Colaborador"
     )
+    
+    telefone = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={"class": "form-control", "id": "telefone", "readonly": "readonly"}),
+        label="Telefone"
+    )
+
+    email = forms.EmailField(
+        required=False,
+        widget=forms.EmailInput(attrs={"class": "form-control", "id": "email", "readonly": "readonly"}),
+        label="E-mail"
+    )
+
+    class Meta:
+        model = MovimentacaoChave
+        fields = ["chave", "colaborador", "telefone", "email", "data_saida", "horario_saida", "operador_saida"]
+        widgets = {
+            "data_saida": forms.DateInput(attrs={"type": "date", "class": "form-control"}),
+            "horario_saida": forms.TimeInput(attrs={"type": "time", "class": "form-control"}),
+        }
 
     class Meta:
         model = MovimentacaoChave

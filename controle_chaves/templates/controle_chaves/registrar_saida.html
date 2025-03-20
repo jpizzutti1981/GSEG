@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -29,43 +28,38 @@
 
                         <!-- Selecionar Chave -->
                         <div class="mb-3">
-                            <label for="{{ form.chave.id_for_label }}" class="form-label fw-bold">🔑 Chave:</label>
+                            <label class="form-label fw-bold">🔑 Chave:</label>
                             {{ form.chave }}
                         </div>
 
-                        <!-- Nome do Responsável (Select2) -->
+                        <!-- Nome do Responsável -->
                         <div class="mb-3">
-                            <label for="id_responsavel" class="form-label fw-bold">🧑‍💼 Responsável:</label>
-                            <select id="id_responsavel" name="{{ form.responsavel.name }}" class="form-select">
-                                <option value="">Selecione um colaborador...</option>
-                                {% for colaborador in colaboradores %}
-                                    <option value="{{ colaborador.id }}">{{ colaborador.nome_completo }}</option>
-                                {% endfor %}
-                            </select>
+                            <label class="form-label fw-bold">🧑‍💼 Responsável:</label>
+                            {{ form.colaborador }}
                         </div>
 
                         <!-- Telefone do Responsável -->
                         <div class="mb-3">
                             <label class="form-label fw-bold">📞 Telefone:</label>
-                            <input type="text" id="id_telefone" class="form-control" readonly>
+                            {{ form.telefone }}
                         </div>
 
                         <!-- E-mail do Responsável -->
                         <div class="mb-3">
                             <label class="form-label fw-bold">📧 E-mail do Responsável:</label>
-                            <input type="text" id="id_email" class="form-control" readonly>
+                            {{ form.email }}
                         </div>
 
-                        <!-- Data de Saída (Corrigido) -->
+                        <!-- Data de Saída -->
                         <div class="mb-3">
-                            <label for="id_data_saida" class="form-label fw-bold">📅 Data de Saída:</label>
-                            <input type="date" name="{{ form.data_saida.name }}" id="id_data_saida" class="form-control" required>
+                            <label class="form-label fw-bold">📅 Data de Saída:</label>
+                            {{ form.data_saida }}
                         </div>
 
-                        <!-- Horário de Saída (Corrigido) -->
+                        <!-- Horário de Saída -->
                         <div class="mb-3">
-                            <label for="id_horario_saida" class="form-label fw-bold">⏰ Horário de Saída:</label>
-                            <input type="time" name="{{ form.horario_saida.name }}" id="id_horario_saida" class="form-control" required>
+                            <label class="form-label fw-bold">⏰ Horário de Saída:</label>
+                            {{ form.horario_saida }}
                         </div>
 
                         <!-- Operador Responsável -->
@@ -86,35 +80,20 @@
     </div>
 </div>
 
-<!-- Script para Auto Preenchimento -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-
+<!-- Script para preencher telefone e e-mail -->
 <script>
-    $(document).ready(function() {
-        $("#id_responsavel").select2({
-            placeholder: "Selecione um colaborador...",
-            allowClear: true
-        });
+    document.getElementById("colaborador").addEventListener("change", function() {
+        let colaboradorId = this.value;
 
-        $("#id_responsavel").change(function() {
-            var colaboradorId = $(this).val();
-            if (colaboradorId) {
-                $.ajax({
-                    url: "{% url 'buscar_dados_colaborador' %}",
-                    data: { colaborador_id: colaboradorId },
-                    dataType: "json",
-                    success: function(data) {
-                        $("#id_email").val(data.email);
-                        $("#id_telefone").val(data.telefone);
-                    }
-                });
-            } else {
-                $("#id_email").val("");
-                $("#id_telefone").val("");
-            }
-        });
+        if (colaboradorId) {
+            fetch(`/controle_chaves/buscar-dados-colaborador/?colaborador_id=${colaboradorId}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("telefone").value = data.telefone || "";
+                    document.getElementById("email").value = data.email || "";
+                })
+                .catch(error => console.error("Erro ao buscar colaborador:", error));
+        }
     });
 </script>
 {% endblock %}
