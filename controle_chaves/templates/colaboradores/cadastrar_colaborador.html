@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>👤 Cadastrar Colaborador</h2>
+                </div>
+                <div class="card-body">
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{% if message.tags == 'success' %}success{% else %}danger{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nome Completo:</label>
+                            {{ form.nome_completo }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Telefone:</label>
+                            {{ form.telefone }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">E-mail:</label>
+                            {{ form.email }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Função:</label>
+                            {{ form.funcao }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Tipo de Usuário:</label>
+                            {{ form.tipo }}
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">💾 Salvar</button>
+                            <a href="{% url 'listar_usuarios' %}" class="btn btn-secondary btn-lg">📜 Listar Colaboradores</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

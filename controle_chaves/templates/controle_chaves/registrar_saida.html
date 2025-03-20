@@ -33,46 +33,45 @@
                             {{ form.chave }}
                         </div>
 
-                        <!-- Nome do Responsável -->
+                        <!-- Nome do Responsável (Select2) -->
                         <div class="mb-3">
-                            <label for="{{ form.responsavel.id_for_label }}" class="form-label fw-bold">🧑‍💼 Responsável:</label>
-                            {{ form.responsavel }}
+                            <label for="id_responsavel" class="form-label fw-bold">🧑‍💼 Responsável:</label>
+                            <select id="id_responsavel" name="{{ form.responsavel.name }}" class="form-select">
+                                <option value="">Selecione um colaborador...</option>
+                                {% for colaborador in colaboradores %}
+                                    <option value="{{ colaborador.id }}">{{ colaborador.nome_completo }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
 
                         <!-- Telefone do Responsável -->
                         <div class="mb-3">
-                            <label for="{{ form.telefone.id_for_label }}" class="form-label fw-bold">📞 Telefone:</label>
-                            {{ form.telefone }}
+                            <label class="form-label fw-bold">📞 Telefone:</label>
+                            <input type="text" id="id_telefone" class="form-control" readonly>
                         </div>
 
                         <!-- E-mail do Responsável -->
                         <div class="mb-3">
-                            <label for="{{ form.email.id_for_label }}" class="form-label fw-bold">📧 E-mail do Responsável:</label>
-                            {{ form.email }}
+                            <label class="form-label fw-bold">📧 E-mail do Responsável:</label>
+                            <input type="text" id="id_email" class="form-control" readonly>
                         </div>
 
-                        <!-- Data de Saída -->
+                        <!-- Data de Saída (Corrigido) -->
                         <div class="mb-3">
-                            <label for="{{ form.data_saida.id_for_label }}" class="form-label fw-bold">📅 Data de Saída:</label>
-                            {{ form.data_saida }}
+                            <label for="id_data_saida" class="form-label fw-bold">📅 Data de Saída:</label>
+                            <input type="date" name="{{ form.data_saida.name }}" id="id_data_saida" class="form-control" required>
                         </div>
 
-                        <!-- Horário de Saída -->
+                        <!-- Horário de Saída (Corrigido) -->
                         <div class="mb-3">
-                            <label for="{{ form.horario_saida.id_for_label }}" class="form-label fw-bold">⏰ Horário de Saída:</label>
-                            {{ form.horario_saida }}
+                            <label for="id_horario_saida" class="form-label fw-bold">⏰ Horário de Saída:</label>
+                            <input type="time" name="{{ form.horario_saida.name }}" id="id_horario_saida" class="form-control" required>
                         </div>
 
                         <!-- Operador Responsável -->
                         <div class="mb-3">
-                            <label for="{{ form.operador_saida.id_for_label }}" class="form-label fw-bold">👮‍♂️ Operador Responsável:</label>
+                            <label class="form-label fw-bold">👮‍♂️ Operador Responsável:</label>
                             {{ form.operador_saida }}
-                        </div>
-
-                        <!-- Observação (Campo Opcional) -->
-                        <div class="mb-3">
-                            <label for="{{ form.observacao.id_for_label }}" class="form-label fw-bold">📝 Observação:</label>
-                            {{ form.observacao }}
                         </div>
 
                         <!-- Botões -->
@@ -86,4 +85,36 @@
         </div>
     </div>
 </div>
+
+<!-- Script para Auto Preenchimento -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+<script>
+    $(document).ready(function() {
+        $("#id_responsavel").select2({
+            placeholder: "Selecione um colaborador...",
+            allowClear: true
+        });
+
+        $("#id_responsavel").change(function() {
+            var colaboradorId = $(this).val();
+            if (colaboradorId) {
+                $.ajax({
+                    url: "{% url 'buscar_dados_colaborador' %}",
+                    data: { colaborador_id: colaboradorId },
+                    dataType: "json",
+                    success: function(data) {
+                        $("#id_email").val(data.email);
+                        $("#id_telefone").val(data.telefone);
+                    }
+                });
+            } else {
+                $("#id_email").val("");
+                $("#id_telefone").val("");
+            }
+        });
+    });
+</script>
 {% endblock %}

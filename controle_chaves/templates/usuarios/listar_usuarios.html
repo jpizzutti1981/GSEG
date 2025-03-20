@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">👥 Lista de Usuários</h2>
+
+    <!-- 🔹 Filtro de Busca -->
+    <form method="GET" class="row g-3 mb-4">
+        <div class="col-md-6">
+            <label for="search_nome" class="form-label fw-bold">🔍 Buscar por Nome:</label>
+            <input type="text" name="search_nome" id="search_nome" class="form-control" placeholder="Digite o nome do usuário..." value="{{ request.GET.search_nome }}">
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-success w-100">🔍 Buscar</button>
+        </div>
+    </form>
+
+    <div class="text-center mb-3">
+        <a href="{% url 'cadastrar_colaborador' %}" class="btn btn-primary">➕ Cadastrar Usuário</a>
+    </div>
+
+    <!-- 🔹 Tabela de Usuários -->
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Função</th>
+                <th>Tipo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for colaborador in colaboradores %}
+                <tr>
+                    <td>{{ colaborador.nome_completo }}</td>
+                    <td>{{ colaborador.telefone }}</td>
+                    <td>{{ colaborador.email }}</td>
+                    <td>{{ colaborador.funcao }}</td>
+                    <td>{{ colaborador.tipo }}</td>
+                    <td class="d-flex justify-content-center">
+                        <!-- Botão Editar -->
+                        <a href="{% url 'editar_usuario' colaborador.id %}" class="btn btn-warning btn-sm mx-1">✏️ Editar</a>
+
+                        <!-- Botão Excluir com Confirmação -->
+                        <button type="button" class="btn btn-danger btn-sm mx-1" onclick="confirmarExclusao('{{ colaborador.id }}')">
+                            🗑️ Excluir
+                        </button>
+
+                        <!-- Formulário oculto para exclusão -->
+                        <form id="delete-form-{{ colaborador.id }}" method="POST" action="{% url 'deletar_usuario' colaborador.id %}" style="display: none;">
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="6" class="text-center text-muted">Nenhum usuário encontrado.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- 🔹 Script corrigido para confirmação de exclusão -->
+<script>
+function confirmarExclusao(usuarioId) {
+    let confirmacao = confirm("⚠️ Tem certeza que deseja excluir este usuário? Essa ação não pode ser desfeita!");
+    if (confirmacao) {
+        document.getElementById("delete-form-" + usuarioId).submit();
+    }
+}
+</script>
+
+{% endblock %}

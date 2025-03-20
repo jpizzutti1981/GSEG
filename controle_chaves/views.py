@@ -31,6 +31,17 @@ from django.shortcuts import render
 from django.db.models import Sum
 from .models import AtendimentoAmbulatorial
 from django.db.models import Sum
+from django.shortcuts import render, redirect
+from .models import Colaborador
+from .forms import ColaboradorForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Colaborador
+from .forms import ColaboradorForm  # Criamos esse formulário no próximo passo
+from django.contrib import messages
+
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from .models import Colaborador
 
 # ✅ LISTAR CHAVES (MOSTRA AS CHAVES DISPONÍVEIS)
 @login_required
@@ -89,6 +100,10 @@ def listar_movimentacoes(request):
 @login_required
 def registrar_saida(request):
     """Registra a saída de uma chave e impede saídas duplicadas."""
+
+    colaboradores = Colaborador.objects.all()  # 🔹 Carregar lista de colaboradores
+    chaves_disponiveis = Chave.objects.filter(disponivel=True)
+
     if request.method == "POST":
         form = MovimentacaoChaveForm(request.POST)
         if form.is_valid():
@@ -97,7 +112,7 @@ def registrar_saida(request):
             # Verifica se a chave já está emprestada
             if not movimentacao.chave.disponivel:
                 messages.error(request, "❌ Essa chave já está emprestada!")
-                return redirect("registrar_saida")  # 🔹 Volta para a mesma página com a mensagem
+                return redirect("registrar_saida")
 
             movimentacao.status = "Não Devolvida"
             movimentacao.save()
@@ -107,17 +122,17 @@ def registrar_saida(request):
             movimentacao.chave.save()
 
             messages.success(request, "✅ Saída da chave registrada com sucesso!")
-            return redirect("registrar_saida")  # 🔹 Agora mantém na página correta
+            return redirect("registrar_saida")
 
         else:
             messages.error(request, "❌ Erro ao registrar saída. Verifique os dados.")
-    
+
     form = MovimentacaoChaveForm()
-    chaves_disponiveis = Chave.objects.filter(disponivel=True)
 
     return render(request, "controle_chaves/registrar_saida.html", {
         "form": form,
-        "chaves_disponiveis": chaves_disponiveis
+        "chaves_disponiveis": chaves_disponiveis,
+        "colaboradores": colaboradores
     })
 
 # ✅ REGISTRAR DEVOLUÇÃO DE CHAVE
@@ -366,3 +381,64 @@ def dashboard_atendimentos(request):
     }
 
     return render(request, "atendimentos/dashboard.html", context)
+
+def cadastrar_colaborador(request):
+    """Cadastra um novo colaborador."""
+    if request.method == "POST":
+        form = ColaboradorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "✅ Colaborador cadastrado com sucesso!")
+            return redirect("listar_usuarios")  # 🔹 Redireciona para a lista de colaboradores
+        else:
+            messages.error(request, "❌ Erro ao cadastrar colaborador. Verifique os dados.")
+    else:
+        form = ColaboradorForm()
+
+    return render(request, "colaboradores/cadastrar_colaborador.html", {"form": form})
+
+def listar_usuarios(request):
+    """ Lista todos os colaboradores cadastrados e permite filtrar pelo nome """
+    busca = request.GET.get("busca", "").strip()
+
+    if busca:
+        colaboradores = Colaborador.objects.filter(nome_completo__icontains=busca)
+    else:
+        colaboradores = Colaborador.objects.all()
+
+    return render(request, "usuarios/listar_usuarios.html", {"colaboradores": colaboradores})
+
+
+def editar_usuario(request, usuario_id):
+    """ Edita um colaborador cadastrado """
+    colaborador = get_object_or_404(Colaborador, id=usuario_id)
+
+    if request.method == "POST":
+        form = ColaboradorForm(request.POST, instance=colaborador)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "✅ Usuário atualizado com sucesso!")
+            return redirect("listar_usuarios")
+    else:
+        form = ColaboradorForm(instance=colaborador)
+
+    return render(request, "usuarios/editar_usuario.html", {"form": form})
+
+def deletar_usuario(request, usuario_id):
+    """ Remove um colaborador do banco de dados """
+    colaborador = get_object_or_404(Colaborador, id=usuario_id)
+    colaborador.delete()
+    messages.success(request, "❌ Usuário removido com sucesso!")
+    return redirect("listar_usuarios")
+
+def buscar_dados_colaborador(request):
+    """ Busca automaticamente e-mail e telefone do colaborador ao selecionar um nome """
+    colaborador_id = request.GET.get("colaborador_id")
+    colaborador = get_object_or_404(Colaborador, id=colaborador_id)
+    
+    data = {
+        "email": colaborador.email,
+        "telefone": colaborador.telefone
+    }
+    
+    return JsonResponse(data)

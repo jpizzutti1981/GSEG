@@ -1,27 +1,21 @@
-from django.db import models
-from django.db import models
 from datetime import timedelta, date
 from django.db import models
 from datetime import date
-from django.db import models
 from django.utils import timezone
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
 import os
-from django.db import models
 from cloudinary.models import CloudinaryField
 from pdf2image import convert_from_path
-import tempfile
 import cloudinary.uploader
-from django.db import models
 from django.utils import timezone
-import os
 import tempfile
 import cloudinary
 import cloudinary.uploader
 from pdf2image import convert_from_path
 import requests
 from django.db import models
+
 
 class Chave(models.Model):
     numero = models.CharField(max_length=10, unique=True, verbose_name="Número da Chave")
@@ -34,28 +28,26 @@ class Chave(models.Model):
 
 class MovimentacaoChave(models.Model):
     STATUS_CHOICES = [
-        ('Devolvida', 'Devolvida'),
-        ('Não Devolvida', 'Não Devolvida'),
+        ("Devolvida", "Devolvida"),
+        ("Não Devolvida", "Não Devolvida"),
     ]
 
     chave = models.ForeignKey(Chave, on_delete=models.CASCADE, verbose_name="Chave")
-    data_saida = models.DateField(verbose_name="Data de Saída")
-    horario_saida = models.TimeField(verbose_name="Horário de Saída")
-    responsavel = models.CharField(max_length=255, verbose_name="Nome do Responsável")
-    telefone = models.CharField(max_length=20, verbose_name="Telefone do Responsável")
-    email = models.EmailField(verbose_name="E-mail do Responsável", blank=True, null=True)  # 🔹 Novo Campo
-
+    responsavel = models.CharField(max_length=255, verbose_name="Responsável")
+    data_saida = models.DateField(auto_now_add=True, verbose_name="Data de Saída")
+    horario_saida = models.TimeField(auto_now_add=True, verbose_name="Horário de Saída")
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default="Não Devolvida", verbose_name="Status")
     operador_saida = models.CharField(max_length=255, verbose_name="Operador de Saída")
 
     data_devolucao = models.DateField(null=True, blank=True, verbose_name="Data de Devolução")
     horario_devolucao = models.TimeField(null=True, blank=True, verbose_name="Horário de Devolução")
     operador_devolucao = models.CharField(max_length=255, null=True, blank=True, verbose_name="Operador de Devolução")
-
+    
     observacao = models.TextField(blank=True, null=True, verbose_name="Observação")
 
     def __str__(self):
         return f"Chave {self.chave.numero} - {self.status}"
+
 
 from cloudinary.models import CloudinaryField
 
@@ -211,3 +203,25 @@ class AtendimentoAmbulatorial(models.Model):
 
     def __str__(self):
         return f"{self.data} - {self.qtde_atendimentos} Atendimentos"
+
+class Colaborador(models.Model):
+    TIPOS_USUARIO = [
+        ("Vigilante", "Vigilante"),
+        ("Funcionário", "Funcionário"),
+        ("Prestador", "Prestador de Serviço"),
+        ("Lojista", "Lojista"),
+        ("Administração", "Administração"),
+        ("Comercial", "Comercial"),
+        ("Segurança", "Segurança"),
+        ("Estacionamento", "Estacionamento"),
+        ("Manutenção", "Manutenção"),
+    ]
+    
+    nome_completo = models.CharField(max_length=255, verbose_name="Nome Completo")
+    telefone = models.CharField(max_length=20, verbose_name="Telefone")
+    email = models.EmailField(unique=True, verbose_name="E-mail")
+    funcao = models.CharField(max_length=100, verbose_name="Função")
+    tipo = models.CharField(max_length=20, choices=TIPOS_USUARIO, verbose_name="Tipo de Usuário")
+
+    def __str__(self):
+        return self.nome_completo

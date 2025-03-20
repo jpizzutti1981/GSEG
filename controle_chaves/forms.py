@@ -1,26 +1,28 @@
 from django import forms
 from .models import MovimentacaoChave
-from django import forms
 from .models import Chave
-from django import forms
 from .models import ReciclagemVigilante
-from django import forms
 from .models import DocumentoFundamental
-from django import forms
 from .models import AtendimentoAmbulatorial
+from .models import Colaborador
+from .models import MovimentacaoChave, Colaborador
 
 class MovimentacaoChaveForm(forms.ModelForm):
+    colaborador = forms.ModelChoiceField(
+        queryset=Colaborador.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control", "id": "colaborador"}),
+        required=True,
+        label="Colaborador"
+    )
+
     class Meta:
         model = MovimentacaoChave
-        fields = ["chave", "responsavel", "telefone", "email", "data_saida", "horario_saida", "operador_saida"]  # ✅ Adicionado 'email'
+        fields = ["chave", "colaborador", "operador_saida", "observacao"]
+
         widgets = {
-            "chave": forms.Select(attrs={"class": "form-control"}),
-            "responsavel": forms.TextInput(attrs={"class": "form-control"}),
-            "telefone": forms.TextInput(attrs={"class": "form-control"}),
-            "email": forms.EmailInput(attrs={"class": "form-control"}),  # ✅ Adicionado EmailInput
-            "data_saida": forms.DateInput(attrs={"type": "date", "class": "form-control"}),
-            "horario_saida": forms.TimeInput(attrs={"type": "time", "class": "form-control"}),
+            "chave": forms.Select(attrs={"class": "form-control", "id": "chave"}),
             "operador_saida": forms.TextInput(attrs={"class": "form-control"}),
+            "observacao": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
         }
     
 class ChaveForm(forms.ModelForm):
@@ -91,4 +93,16 @@ class AtendimentoAmbulatorialForm(forms.ModelForm):
             "colaboradores_terceiros": forms.NumberInput(attrs={"class": "form-control"}),
             "colaboradores_organicos": forms.NumberInput(attrs={"class": "form-control"}),
             "prestadores_servico": forms.NumberInput(attrs={"class": "form-control"}),
+        }
+
+class ColaboradorForm(forms.ModelForm):
+    class Meta:
+        model = Colaborador
+        fields = ["nome_completo", "telefone", "email", "funcao", "tipo"]
+        widgets = {
+            "nome_completo": forms.TextInput(attrs={"class": "form-control", "placeholder": "Nome completo"}),
+            "telefone": forms.TextInput(attrs={"class": "form-control", "placeholder": "Telefone"}),
+            "email": forms.EmailInput(attrs={"class": "form-control", "placeholder": "E-mail"}),
+            "funcao": forms.TextInput(attrs={"class": "form-control", "placeholder": "Função"}),
+            "tipo": forms.Select(attrs={"class": "form-select"}),  # 🔹 Select para o tipo de usuário
         }
