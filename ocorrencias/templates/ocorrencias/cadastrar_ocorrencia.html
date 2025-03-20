@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="container mt-4">
     <h2>🆕 Cadastrar Ocorrência</h2>
@@ -11,33 +10,27 @@
         <!-- Exibir os campos do formulário com Bootstrap -->
         <div class="mb-3">
             📅 {{ form.data_ocorrencia.label_tag }}
-            <input type="date" name="{{ form.data_ocorrencia.name }}" class="form-control" required>
+            {{ form.data_ocorrencia }}
         </div>
 
         <div class="mb-3">
             ⏰ {{ form.horario.label_tag }}
-            <input type="time" name="{{ form.horario.name }}" class="form-control" required>
+            {{ form.horario }}
         </div>
 
         <div class="mb-3">
             🚨 {{ form.tipo.label_tag }}
-            <select name="{{ form.tipo.name }}" class="form-control select2">
-                {{ form.tipo }}
-            </select>
+            {{ form.tipo }}
         </div>
 
         <div class="mb-3">
             📌 {{ form.status.label_tag }}
-            <select name="{{ form.status.name }}" class="form-control select2">
-                {{ form.status }}
-            </select>
+            {{ form.status }}
         </div>
 
         <div class="mb-3">
             📍 {{ form.local.label_tag }}
-            <select name="{{ form.local.name }}" class="form-control select2">
-                {{ form.local }}
-            </select>
+            {{ form.local }}
         </div>
 
         <div class="mb-3">
@@ -52,9 +45,7 @@
 
         <div class="mb-3">
             👤 {{ form.responsavel.label_tag }}
-            <select name="{{ form.responsavel.name }}" class="form-control select2">
-                {{ form.responsavel }}
-            </select>
+            {{ form.responsavel }}
         </div>
 
         <div class="mb-3">
@@ -69,9 +60,7 @@
 
         <div class="mb-3">
             🕵️ {{ form.supervisor.label_tag }}
-            <select name="{{ form.supervisor.name }}" class="form-control select2">
-                {{ form.supervisor }}
-            </select>
+            {{ form.supervisor }}
         </div>
 
         <!-- Upload de Imagem -->
@@ -84,19 +73,4 @@
         <a href="{% url 'listar_ocorrencias' %}" class="btn btn-secondary">❌ Cancelar</a>
     </form>
 </div>
-
-<!-- Adicionando Select2 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-
-<script>
-    $(document).ready(function() {
-        $('.select2').select2({
-            width: '100%',
-            placeholder: "Selecione uma opção...",
-            allowClear: true
-        });
-    });
-</script>
-
 {% endblock %}
