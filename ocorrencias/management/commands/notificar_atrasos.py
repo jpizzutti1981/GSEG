@@ -9,18 +9,20 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         agora = datetime.now()
-        limite_24h = agora - timedelta(hours=24)  # ✅ Considera data e hora
+        limite_24h = agora - timedelta(hours=24)  # ✅ Agora considera exatamente 24h atrás
 
-        # 🔍 Busca chaves não devolvidas com data_saida há mais de 24h
+        # 🔍 Busca chaves que NÃO foram devolvidas e passaram de 24h desde a retirada
         chaves_atrasadas = MovimentacaoChave.objects.filter(
             status__iexact="Não Devolvida",
-            data_saida__lte=limite_24h  # ✅ Considera hora também!
+            data_saida__lte=limite_24h  # ✅ Agora verifica exatamente a data + hora correta
         )
 
+        # 🚨 Se não houver chaves atrasadas, interrompe o script
         if not chaves_atrasadas.exists():
             self.stdout.write(self.style.WARNING("🚨 Nenhuma chave está atrasada. Nenhuma notificação enviada."))
             return
 
+        # 🔹 Enviar e-mails apenas para chaves que passaram de 24h
         for chave in chaves_atrasadas:
             if chave.email:
                 self.enviar_email(chave.responsavel, chave.email, chave.chave.numero, chave.data_saida)
