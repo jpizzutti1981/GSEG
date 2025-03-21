@@ -3,24 +3,23 @@ from datetime import datetime, timedelta
 from django.core.management.base import BaseCommand
 from django.core.mail import send_mail
 from django.conf import settings
-from django.db.models import Q
-from django.db.models.functions import Cast
-from django.db.models import DateField
+from django.db.models import Q, F
 from controle_chaves.models import MovimentacaoChave
 
 class Command(BaseCommand):
     help = "Envia e-mail para responsáveis que não devolveram a chave após 24h."
 
     def handle(self, *args, **kwargs):
-        agora = datetime.now().date()
-        tempo_limite = agora - timedelta(days=1)  # 🔹 Chaves com mais de 24h da saída
+        agora = datetime.now()  # 🔹 Captura data e hora ATUAL do servidor
+        limite_tempo = agora - timedelta(hours=24)  # 🔹 Chaves com MAIS DE 24h
 
-        # 🔹 Buscar chaves emprestadas há mais de 24h
-        chaves_atrasadas = MovimentacaoChave.objects.annotate(
-            data_saida_date=Cast("data_saida", DateField())  # 🔹 Garante que `data_saida` seja `date`
-        ).filter(Q(status__iexact="Não Devolvida"), data_saida_date__lte=tempo_limite)
+        # 🔹 Filtra chaves atrasadas que ainda não foram devolvidas
+        chaves_atrasadas = MovimentacaoChave.objects.filter(
+            Q(status__iexact="Não Devolvida"), 
+            data_saida__lte=limite_tempo  # 🔹 Agora comparando com data e HORA corretamente
+        )
 
-        # 🚨 Interrompe se não houver chaves atrasadas
+        # 🚨 Se não houver chaves atrasadas, encerra o script
         if not chaves_atrasadas.exists():
             self.stdout.write(self.style.WARNING("🚨 Nenhuma chave está atrasada. Nenhuma notificação enviada."))
             return
@@ -38,7 +37,7 @@ class Command(BaseCommand):
             corpo = f"""
             Olá {responsavel},
 
-            A chave {numero_chave} retirada no dia {data_saida.strftime('%d/%m/%Y')} ainda não foi devolvida.
+            A chave {numero_chave} retirada no dia {data_saida.strftime('%d/%m/%Y %H:%M')} ainda não foi devolvida.
 
             Por favor, regularize essa situação o quanto antes.
 
