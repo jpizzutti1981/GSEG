@@ -236,11 +236,6 @@ import os
 LOG_DIR = os.path.join(BASE_DIR, "logs")
 os.makedirs(LOG_DIR, exist_ok=True)  # 🔹 Garante que a pasta exista
 
-import os
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -289,7 +284,6 @@ LOGGING = {
         },
     },
 }
-
 
 # Configuração de E-mail no Django
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -1,0 +1,422 @@
+[INFO] 2025-03-21 22:24:58,096 autoreload Watching for file changes with StatReloader
+[INFO] 2025-03-21 22:25:05,834 basehttp "GET / HTTP/1.1" 302 0
+[INFO] 2025-03-21 22:25:07,161 basehttp "GET /accounts/login/?next=/ HTTP/1.1" 200 1871
+[INFO] 2025-03-21 22:25:07,205 basehttp "GET /static/img/logo6.png HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:25:07,208 basehttp "GET /static/img/logoad2.png HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:25:07,316 basehttp "GET /static/css/style.css HTTP/1.1" 304 0
+[WARNING] 2025-03-21 22:25:10,845 log Not Found: /favicon.ico
+[WARNING] 2025-03-21 22:25:12,029 basehttp "GET /favicon.ico HTTP/1.1" 404 179
+[INFO] 2025-03-21 22:25:19,675 basehttp "GET /admin/ HTTP/1.1" 302 0
+[INFO] 2025-03-21 22:25:21,038 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3097
+[INFO] 2025-03-21 22:25:21,068 basehttp "GET /static/vendor/adminlte/img/AdminLTELogo.png HTTP/1.1" 200 2637
+[INFO] 2025-03-21 22:25:21,071 basehttp "GET /static/jazzmin/css/main.css HTTP/1.1" 200 16969
+[INFO] 2025-03-21 22:25:21,071 basehttp "GET /static/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 62440
+[INFO] 2025-03-21 22:25:21,078 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+[INFO] 2025-03-21 22:25:21,095 basehttp "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 200 1382975
+[INFO] 2025-03-21 22:25:21,202 basehttp "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 103009
+[INFO] 2025-03-21 22:25:22,453 basehttp "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 200 44244
+[INFO] 2025-03-21 22:25:28,450 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 156400
+[INFO] 2025-03-21 22:25:34,325 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[INFO] 2025-03-21 22:25:36,354 basehttp "GET /admin/ HTTP/1.1" 200 9572
+[INFO] 2025-03-21 22:25:36,403 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 200 25392
+[INFO] 2025-03-21 22:25:36,505 basehttp "GET /static/jazzmin/js/main.js HTTP/1.1" 200 2391
+[INFO] 2025-03-21 22:25:46,333 basehttp - Broken pipe from ('127.0.0.1', 64034)
+[INFO] 2025-03-21 22:25:48,515 basehttp "GET /admin/auth/user/ HTTP/1.1" 200 20275
+[INFO] 2025-03-21 22:25:48,554 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+[INFO] 2025-03-21 22:25:48,556 basehttp "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+[INFO] 2025-03-21 22:25:48,557 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 200 87533
+[INFO] 2025-03-21 22:25:48,559 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 200 163184
+[INFO] 2025-03-21 22:25:48,665 basehttp "GET /static/vendor/select2/css/select2.min.css HTTP/1.1" 200 16264
+[INFO] 2025-03-21 22:25:49,836 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+[INFO] 2025-03-21 22:25:49,858 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8959
+[INFO] 2025-03-21 22:25:51,029 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+[INFO] 2025-03-21 22:25:52,185 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+[INFO] 2025-03-21 22:25:53,450 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+[INFO] 2025-03-21 22:25:54,608 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+[INFO] 2025-03-21 22:25:55,796 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+[INFO] 2025-03-21 22:25:58,253 basehttp "GET /static/jazzmin/js/change_list.js HTTP/1.1" 200 2252
+[INFO] 2025-03-21 22:25:59,437 basehttp "GET /static/vendor/select2/js/select2.min.js HTTP/1.1" 200 73170
+[INFO] 2025-03-21 22:30:03,747 autoreload C:\Users\Jorge\gestao_ocorrencias\gestao_ocorrencias\settings.py changed, reloading.
+[INFO] 2025-03-21 22:30:05,240 autoreload Watching for file changes with StatReloader
+[INFO] 2025-03-21 22:30:37,340 basehttp "GET /admin/auth/user/ HTTP/1.1" 200 23095
+[INFO] 2025-03-21 22:30:37,372 basehttp "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:37,377 basehttp "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:37,380 basehttp "GET /static/vendor/select2/css/select2.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:37,380 basehttp "GET /static/css/admin_custom.css HTTP/1.1" 200 884
+[INFO] 2025-03-21 22:30:37,492 basehttp "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:38,666 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:38,690 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8959
+[INFO] 2025-03-21 22:30:39,830 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:41,008 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:42,164 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:43,329 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:44,488 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:44,635 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:45,823 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:46,982 basehttp "GET /static/images/logo.png HTTP/1.1" 200 4306
+[INFO] 2025-03-21 22:30:48,143 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:49,324 basehttp "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:50,591 basehttp "GET /static/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:51,824 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:52,981 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:54,132 basehttp "GET /static/jazzmin/js/main.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:55,292 basehttp "GET /static/js/admin_custom.js HTTP/1.1" 200 629
+[INFO] 2025-03-21 22:30:56,468 basehttp "GET /static/vendor/select2/js/select2.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:30:57,633 basehttp "GET /static/jazzmin/js/change_list.js HTTP/1.1" 304 0
+[WARNING] 2025-03-21 22:31:04,656 log Not Found: /static/images/favicon.ico
+[WARNING] 2025-03-21 22:31:05,813 basehttp "GET /static/images/favicon.ico HTTP/1.1" 404 179
+[INFO] 2025-03-21 22:31:05,900 basehttp "GET /dashboard/ HTTP/1.1" 200 17847
+[INFO] 2025-03-21 22:31:12,120 basehttp "GET /admin/auth/user/ HTTP/1.1" 200 23095
+[INFO] 2025-03-21 22:32:13,519 basehttp "GET /admin/ HTTP/1.1" 200 12392
+[INFO] 2025-03-21 22:32:16,239 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[INFO] 2025-03-21 22:32:18,053 basehttp - Broken pipe from ('127.0.0.1', 64321)
+[INFO] 2025-03-21 22:32:20,328 basehttp "GET /admin/auth/user/ HTTP/1.1" 200 23095
+[ERROR] 2025-03-21 22:32:24,008 log Internal Server Error: /admin/auth/user/1/change/
+Traceback (most recent call last):
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1073, in render
+    return render_value_in_context(output, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\template\base.py", line 1050, in render_value_in_context
+    value = str(value)
+            ^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\forms\utils.py", line 79, in __str__
+    return self.as_widget()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\forms\boundfield.py", line 108, in as_widget
+    return widget.render(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\forms\widgets.py", line 278, in render
+    context = self.get_context(name, value, attrs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\contrib\admin\widgets.py", line 329, in get_context
+    "rendered_widget": self.widget.render(name, value, attrs),
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\forms\widgets.py", line 278, in render
+    context = self.get_context(name, value, attrs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\contrib\admin\widgets.py", line 43, in get_context
+    context = super().get_context(name, value, attrs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\forms\widgets.py", line 764, in get_context
+    context = super().get_context(name, value, attrs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\forms\widgets.py", line 715, in get_context
+    context["widget"]["optgroups"] = self.optgroups(
+                                     ^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\forms\widgets.py", line 655, in optgroups
+    for index, (option_value, option_label) in enumerate(self.choices):
+                                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\forms\models.py", line 1424, in __iter__
+    for obj in queryset:
+               ^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\db\models\query.py", line 518, in _iterator
+    yield from iterable
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\db\models\query.py", line 123, in __iter__
+    for row in compiler.results_iter(results):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 2115, in cursor_iter
+    cursor.close()
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\psycopg\server_cursor.py", line 268, in close
+    self._conn.wait(self._close_gen())
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\psycopg\connection.py", line 407, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\psycopg\waiting.py", line 256, in wait_select
+    s = gen.send(ready)
+        ^^^^^^^^^^^^^^^
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\psycopg\server_cursor.py", line 160, in _close_gen
+    yield from self._conn._exec_command(query)
+  File "C:\Users\Jorge\gestao_ocorrencias\venv\Lib\site-packages\psycopg\_connection_base.py", line 479, in _exec_command
+    raise e.error_from_result(result, encoding=self.pgconn._encoding)
+psycopg.errors.InvalidCursorName: cursor "_django_curs_1568_sync_1" does not exist
+[INFO] 2025-03-21 22:32:24,333 basehttp - Broken pipe from ('127.0.0.1', 64322)
+[INFO] 2025-03-21 22:32:26,319 basehttp "GET /admin/auth/user/1/change/ HTTP/1.1" 200 43255
+[INFO] 2025-03-21 22:32:26,354 basehttp "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:26,354 basehttp "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:26,354 basehttp "GET /static/css/admin_custom.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:26,363 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:26,468 basehttp "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:27,626 basehttp "GET /static/vendor/select2/css/select2.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:27,751 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8959
+[INFO] 2025-03-21 22:32:28,809 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:29,963 basehttp "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+[INFO] 2025-03-21 22:32:31,117 basehttp "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+[INFO] 2025-03-21 22:32:32,270 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:33,460 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:33,608 basehttp "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+[INFO] 2025-03-21 22:32:34,796 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:35,988 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:37,159 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:38,337 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:39,528 basehttp "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15502
+[INFO] 2025-03-21 22:32:40,695 basehttp "GET /static/images/logo.png HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:41,851 basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+[INFO] 2025-03-21 22:32:43,004 basehttp "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:44,173 basehttp "GET /static/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:45,463 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:32:45,919 basehttp "GET /admin/ HTTP/1.1" 200 12392
+[INFO] 2025-03-21 22:32:45,972 basehttp "GET /static/js/admin_custom.js HTTP/1.1" 200 629
+[INFO] 2025-03-21 22:32:46,641 basehttp - Broken pipe from ('127.0.0.1', 64325)
+[INFO] 2025-03-21 22:32:47,805 basehttp - Broken pipe from ('127.0.0.1', 64379)
+[INFO] 2025-03-21 22:32:48,970 basehttp - Broken pipe from ('127.0.0.1', 64324)
+[INFO] 2025-03-21 22:32:50,121 basehttp - Broken pipe from ('127.0.0.1', 64327)
+[INFO] 2025-03-21 22:32:51,323 basehttp - Broken pipe from ('127.0.0.1', 64380)
+[INFO] 2025-03-21 22:32:52,834 basehttp - Broken pipe from ('127.0.0.1', 64326)
+[INFO] 2025-03-21 22:32:52,980 basehttp "GET /static/jazzmin/js/main.js HTTP/1.1" 200 2391
+[INFO] 2025-03-21 22:33:09,060 basehttp "GET /admin/auth/group/ HTTP/1.1" 200 16039
+[INFO] 2025-03-21 22:33:09,096 basehttp "GET /static/jazzmin/js/change_list.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:33:09,097 basehttp "GET /static/vendor/select2/js/select2.min.js HTTP/1.1" 200 73170
+[INFO] 2025-03-21 22:33:10,633 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8959
+[INFO] 2025-03-21 22:34:34,809 autoreload C:\Users\Jorge\gestao_ocorrencias\gestao_ocorrencias\settings.py changed, reloading.
+[INFO] 2025-03-21 22:34:36,258 autoreload Watching for file changes with StatReloader
+[INFO] 2025-03-21 22:35:20,154 autoreload C:\Users\Jorge\gestao_ocorrencias\gestao_ocorrencias\settings.py changed, reloading.
+[INFO] 2025-03-21 22:35:21,538 autoreload Watching for file changes with StatReloader
+[INFO] 2025-03-21 22:35:30,842 basehttp "GET /admin/auth/group/ HTTP/1.1" 200 16039
+[INFO] 2025-03-21 22:35:30,876 basehttp "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:30,880 basehttp "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:30,884 basehttp "GET /static/css/admin_custom.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:30,885 basehttp "GET /static/vendor/select2/css/select2.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:30,984 basehttp "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:32,166 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:32,251 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8959
+[INFO] 2025-03-21 22:35:33,455 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:34,741 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:35,969 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:37,152 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:38,482 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:38,628 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:39,961 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:41,126 basehttp "GET /static/images/logo.png HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:42,289 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:43,455 basehttp "GET /static/js/admin_custom.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:44,684 basehttp "GET /static/jazzmin/js/main.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:45,958 basehttp "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:47,136 basehttp "GET /static/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:48,304 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:49,492 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:50,656 basehttp "GET /static/vendor/select2/js/select2.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:35:51,826 basehttp "GET /static/jazzmin/js/change_list.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:36:01,154 basehttp "GET /admin/controle_chaves/reciclagemvigilante/ HTTP/1.1" 200 22455
+[INFO] 2025-03-21 22:36:02,746 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8959
+[INFO] 2025-03-21 22:36:19,681 basehttp "GET /admin/controle_chaves/movimentacaochave/ HTTP/1.1" 200 27230
+[INFO] 2025-03-21 22:36:21,127 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8959
+[INFO] 2025-03-21 22:39:00,692 basehttp "GET /admin/controle_chaves/movimentacaochave/ HTTP/1.1" 200 27246
+[INFO] 2025-03-21 22:39:00,729 basehttp "GET /static/css/admin_custom.css HTTP/1.1" 200 884
+[INFO] 2025-03-21 22:39:00,730 basehttp "GET /static/jazzmin/css/main.css HTTP/1.1" 200 16969
+[INFO] 2025-03-21 22:39:00,730 basehttp "GET /static/vendor/select2/css/select2.min.css HTTP/1.1" 200 16264
+[INFO] 2025-03-21 22:39:00,751 basehttp "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 200 1382975
+[INFO] 2025-03-21 22:39:00,863 basehttp "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 103009
+[INFO] 2025-03-21 22:39:02,276 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8959
+[INFO] 2025-03-21 22:39:02,280 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 200 87533
+[INFO] 2025-03-21 22:39:03,433 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+[INFO] 2025-03-21 22:39:04,644 basehttp "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+[INFO] 2025-03-21 22:39:05,872 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+[INFO] 2025-03-21 22:39:07,045 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+[INFO] 2025-03-21 22:39:07,190 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+[INFO] 2025-03-21 22:39:08,443 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+[INFO] 2025-03-21 22:39:09,663 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 200 163184
+[INFO] 2025-03-21 22:39:10,816 basehttp "GET /static/images/logo.png HTTP/1.1" 200 4306
+[INFO] 2025-03-21 22:39:11,978 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+[INFO] 2025-03-21 22:39:13,134 basehttp "GET /static/js/admin_custom.js HTTP/1.1" 200 629
+[INFO] 2025-03-21 22:39:14,282 basehttp "GET /static/jazzmin/js/main.js HTTP/1.1" 200 2391
+[INFO] 2025-03-21 22:39:15,466 basehttp "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 200 44244
+[INFO] 2025-03-21 22:39:16,630 basehttp "GET /static/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 62440
+[INFO] 2025-03-21 22:39:17,802 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 156400
+[INFO] 2025-03-21 22:39:18,968 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 200 25392
+[INFO] 2025-03-21 22:39:20,147 basehttp "GET /static/vendor/select2/js/select2.min.js HTTP/1.1" 200 73170
+[INFO] 2025-03-21 22:39:21,363 basehttp - Broken pipe from ('127.0.0.1', 64491)
+[INFO] 2025-03-21 22:39:28,897 basehttp "GET /admin/ HTTP/1.1" 200 12408
+[WARNING] 2025-03-21 22:39:29,046 log Not Found: /static/images/favicon.ico
+[WARNING] 2025-03-21 22:39:30,310 basehttp "GET /static/images/favicon.ico HTTP/1.1" 404 179
+[INFO] 2025-03-21 22:39:51,681 autoreload C:\Users\Jorge\gestao_ocorrencias\gestao_ocorrencias\settings.py changed, reloading.
+INFO 2025-03-21 22:39:53,061 autoreload Watching for file changes with StatReloader
+INFO 2025-03-21 22:39:58,326 basehttp "GET /admin/ HTTP/1.1" 200 12408
+INFO 2025-03-21 22:40:09,550 basehttp "GET /admin/ HTTP/1.1" 200 12408
+INFO 2025-03-21 22:40:09,588 basehttp "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+INFO 2025-03-21 22:40:09,592 basehttp "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+INFO 2025-03-21 22:40:09,592 basehttp "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+INFO 2025-03-21 22:40:09,595 basehttp "GET /static/css/admin_custom.css HTTP/1.1" 304 0
+INFO 2025-03-21 22:40:15,221 basehttp "GET /admin/ HTTP/1.1" 200 12408
+INFO 2025-03-21 22:40:15,255 basehttp "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 103009
+INFO 2025-03-21 22:40:15,258 basehttp "GET /static/jazzmin/css/main.css HTTP/1.1" 200 16969
+INFO 2025-03-21 22:40:15,261 basehttp "GET /static/css/admin_custom.css HTTP/1.1" 200 884
+INFO 2025-03-21 22:40:15,261 basehttp "GET /static/images/logo.png HTTP/1.1" 200 4306
+INFO 2025-03-21 22:40:15,268 basehttp "GET /static/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 62440
+INFO 2025-03-21 22:40:15,272 basehttp "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 200 44244
+INFO 2025-03-21 22:40:15,272 basehttp "GET /static/js/admin_custom.js HTTP/1.1" 200 629
+INFO 2025-03-21 22:40:15,273 basehttp "GET /static/jazzmin/js/main.js HTTP/1.1" 200 2391
+INFO 2025-03-21 22:40:15,285 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-03-21 22:40:15,293 basehttp "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 200 1382975
+INFO 2025-03-21 22:40:15,366 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 200 25392
+INFO 2025-03-21 22:40:15,369 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 156400
+WARNING 2025-03-21 22:40:15,431 log Not Found: /static/images/favicon.ico
+WARNING 2025-03-21 22:40:15,435 basehttp "GET /static/images/favicon.ico HTTP/1.1" 404 179
+INFO 2025-03-21 22:42:03,384 autoreload C:\Users\Jorge\gestao_ocorrencias\gestao_ocorrencias\settings.py changed, reloading.
+[INFO] 2025-03-21 22:42:04,591 autoreload Watching for file changes with StatReloader
+[INFO] 2025-03-21 22:42:34,260 basehttp "GET /admin/ HTTP/1.1" 200 12392
+[INFO] 2025-03-21 22:42:34,308 basehttp "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:34,313 basehttp "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:34,313 basehttp "GET /static/images/logo.png HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:34,313 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:34,313 basehttp "GET /static/css/admin_custom.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:34,410 basehttp "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:35,584 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:36,538 basehttp - Broken pipe from ('127.0.0.1', 49461)
+[INFO] 2025-03-21 22:42:36,807 basehttp "GET /static/js/admin_custom.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:37,982 basehttp "GET /static/jazzmin/js/main.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:39,161 basehttp "GET /static/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:40,354 basehttp "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:41,525 basehttp "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:51,973 basehttp "GET /accounts/logout/ HTTP/1.1" 302 0
+[INFO] 2025-03-21 22:42:53,728 basehttp "GET /accounts/login/ HTTP/1.1" 200 1992
+[INFO] 2025-03-21 22:42:53,763 basehttp "GET /static/img/logoad2.png HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:53,763 basehttp "GET /static/img/logo6.png HTTP/1.1" 304 0
+[INFO] 2025-03-21 22:42:53,878 basehttp "GET /static/css/style.css HTTP/1.1" 304 0
+[WARNING] 2025-03-21 22:42:57,441 log Not Found: /favicon.ico
+[WARNING] 2025-03-21 22:42:58,611 basehttp "GET /favicon.ico HTTP/1.1" 404 179
+[INFO] 2025-03-21 22:43:02,686 basehttp "GET /admin/ HTTP/1.1" 302 0
+[INFO] 2025-03-21 22:43:04,009 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3188

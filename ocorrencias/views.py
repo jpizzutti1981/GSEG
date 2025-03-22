@@ -161,6 +161,9 @@ def listar_ocorrencias(request):
     if local_filtro:
         ocorrencias = ocorrencias.filter(local_id=local_filtro)
 
+    # 🔹 Ordenar por data e horário (mais recentes no topo)
+    ocorrencias = ocorrencias.order_by('-data_ocorrencia', '-horario')
+
     tipos = TipoOcorrencia.objects.all()
     locais = Local.objects.all()
 
