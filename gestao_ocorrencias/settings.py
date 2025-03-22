@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'accounts',
     'ocorrencias',
     'notificacoes',
-    'controle_chaves',   
+    'controle_chaves',
+    'core',   
     ]
 
 MIDDLEWARE = [
@@ -229,24 +230,66 @@ JAZZMIN_SETTINGS = {
 
 JAZZMIN_SETTINGS["hide_apps"] = ["admin_interface"]
 
+import os
+
+# 📌 Diretório onde os logs serão armazenados
+LOG_DIR = os.path.join(BASE_DIR, "logs")
+os.makedirs(LOG_DIR, exist_ok=True)  # 🔹 Garante que a pasta exista
+
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'django_q_debug.log',
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[{levelname}] {asctime} {module} {message}",
+            "style": "{",
+        },
+        "simple": {
+            "format": "[{levelname}] {message}",
+            "style": "{",
         },
     },
-    'loggers': {
-        'django_q': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
+    "handlers": {
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "logs/django.log"),
+            "formatter": "verbose",
+        },
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+        "database": {
+            "level": "INFO",
+            "class": "core.logging_handlers.DatabaseLogHandler",  # 🔥 Vamos criar esse handler
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file", "console", "database"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "django.request": {
+            "handlers": ["file", "console", "database"],
+            "level": "WARNING",
+            "propagate": False,
+        },
+        "django.db.backends": {
+            "handlers": ["file", "console", "database"],
+            "level": "ERROR",
+            "propagate": False,
         },
     },
 }
+
 
 # Configuração de E-mail no Django
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
