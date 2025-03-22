@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'ocorrencias',
     'notificacoes',
     'controle_chaves',
-    'core',   
+    'core',
+    'planos_acao',   
     ]
 
 MIDDLEWARE = [
@@ -291,8 +292,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  # Para TLS, use 587. Se for SSL, troque para 465
 EMAIL_USE_TLS = True  # Se usar SSL, troque para False
 EMAIL_USE_SSL = False  # Deixe False se EMAIL_USE_TLS estiver True
-EMAIL_HOST_USER = "jpizzutti.jp@gmail.com"  # Seu e-mail
-EMAIL_HOST_PASSWORD = "rqutdexewlhlzfgx"  # Senha de aplicativo gerada pelo Google
+EMAIL_HOST_USER = "gsegurancapontal@gmail.com"  # Seu e-mail
+EMAIL_HOST_PASSWORD = "aeoswlmsqlxptusr"  # Senha de aplicativo gerada pelo Google
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Define o e-mail de envio padrão
 
 import os

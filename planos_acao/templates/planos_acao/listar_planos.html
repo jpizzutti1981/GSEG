@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load filtros_customizados %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>📋 Planos de Ação</h2>
+
+  <!-- Filtro -->
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-3">
+      <input type="text" name="responsavel" class="form-control" placeholder="Responsável" value="{{ request_responsavel }}">
+    </div>
+    <div class="col-md-3">
+      <select name="status" class="form-select">
+        <option value="">Status</option>
+        {% for valor, label in status_opcoes %}
+          <option value="{{ valor }}" {% if request_status == valor %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-2">
+      <input type="date" name="data_inicio" class="form-control" value="{{ request_data_inicio }}">
+    </div>
+    <div class="col-md-2">
+      <input type="date" name="data_fim" class="form-control" value="{{ request_data_fim }}">
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+    </div>
+  </form>
+
+  <!-- Botão novo plano -->
+  <a href="{% url 'criar_plano' %}" class="btn btn-success mb-3">➕ Novo Plano</a>
+
+  <!-- Tabela -->
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>Ocorrência</th>
+        <th>Descrição</th>
+        <th>Responsável</th>
+        <th>Prazo</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for plano in planos %}
+      <tr>
+        <td>{{ plano.ocorrencia }}</td>
+        <td>{{ plano.descricao }}</td>
+        <td>{{ plano.responsavel }}</td>
+        <td>{{ plano.prazo|date:"d \d\e F \d\e Y" }}</td>
+        <td>
+          {% with plano.status|lower|remove_acentos as status_normalizado %}
+            {% if status_normalizado == 'concluido' %}
+              <span class="badge bg-success"><i class="fas fa-check-circle me-1"></i>Concluído</span>
+            {% elif status_normalizado == 'em_andamento' %}
+              <span class="badge bg-warning text-dark"><i class="fas fa-spinner me-1"></i>Em Andamento</span>
+            {% elif status_normalizado == 'pendente' %}
+              <span class="badge bg-danger"><i class="fas fa-exclamation-circle me-1"></i>Pendente</span>
+            {% else %}
+              <span class="badge bg-secondary">{{ plano.status }}</span>
+            {% endif %}
+          {% endwith %}
+        </td>
+        <td>
+          <div class="d-flex gap-2">
+            <a href="{% url 'detalhar_plano' plano.id %}" class="btn btn-sm btn-info" title="Detalhar">👁️</a>
+            <a href="{% url 'editar_plano' plano.id %}" class="btn btn-sm btn-warning" title="Editar">✏️</a>
+            <a href="{% url 'deletar_plano' plano.id %}" class="btn btn-sm btn-danger" title="Excluir">🗑️</a>
+          </div>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6" class="text-center">Nenhum plano encontrado.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

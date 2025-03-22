@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>🔍 Detalhes do Plano de Ação</h2>
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Ocorrência:</strong> {{ plano.ocorrencia }}</li>
+        <li class="list-group-item"><strong>Descrição:</strong> {{ plano.descricao }}</li>
+        <li class="list-group-item"><strong>Responsável:</strong> {{ plano.responsavel }}</li>
+        <li class="list-group-item"><strong>Prazo:</strong> {{ plano.prazo|date:"d/m/Y" }}</li>
+        <li class="list-group-item"><strong>Status:</strong> {{ plano.status }}</li>
+    </ul>
+    <div class="mt-3">
+        <a href="{% url 'listar_planos' %}" class="btn btn-secondary">Voltar</a>
+    </div>
+</div>
+{% endblock %}
